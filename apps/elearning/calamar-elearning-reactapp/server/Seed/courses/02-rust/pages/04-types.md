@@ -1,0 +1,1 @@
+Rust gives you two ways to define your own types: **structs**, which group related fields, and **enums**, which describe a value that is one of several variants. Together with **pattern matching**, they let you model your domain so precisely that invalid states can't even be represented.

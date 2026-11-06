@@ -1,0 +1,1 @@
+Components are the building blocks of every React application. In this chapter you will learn the JSX syntax, how components receive data through **props**, and how to render lists and conditional content.

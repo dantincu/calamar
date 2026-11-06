@@ -1,0 +1,1 @@
+Rendering should be pure: given props and state, return UI. But real apps must also talk to the world outside React — timers, the network, browser APIs, third-party widgets. **Effects** are React's way of doing that. In this chapter you will learn `useEffect`, how to fetch data correctly, and how to package effect logic into **custom hooks**.

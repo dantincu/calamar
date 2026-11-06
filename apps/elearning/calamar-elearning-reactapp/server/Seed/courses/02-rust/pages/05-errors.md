@@ -1,0 +1,1 @@
+Rust splits errors into two kinds. **Unrecoverable** errors — bugs, broken invariants — stop the program with `panic!`. **Recoverable** errors — a missing file, invalid input, a network timeout — are ordinary values of type `Result<T, E>` that the compiler makes you handle. There are no exceptions.

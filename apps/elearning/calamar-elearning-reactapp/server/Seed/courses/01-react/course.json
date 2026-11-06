@@ -1,0 +1,57 @@
+{
+  "title": "Learn React: From Components to Complete Apps",
+  "description": "A hands-on introduction to React for developers who know some JavaScript. You will build components with JSX, manage state and events, fetch data with effects, write custom hooks, share state with context and finish by building a small notes app. Every lesson comes with sample code files you can drop into a Vite project.",
+  "category": [ "Software Engineering", "Web Development", "Frontend" ],
+  "tags": [ "react", "javascript", "frontend", "web", "beginner", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Getting Started", "chapter": true, "page": "pages/01-getting-started.md",
+      "items": [
+        { "title": "What is React?", "page": "pages/01-01-what-is-react.md" },
+        { "title": "Setting up a project with Vite", "page": "pages/01-02-setup.md", "files": [ "files/setup/main.jsx", "files/setup/App.jsx", "files/setup/index.html" ] }
+      ]
+    },
+    {
+      "title": "Components and JSX", "chapter": true, "page": "pages/02-components.md",
+      "items": [
+        { "title": "JSX in depth", "page": "pages/02-01-jsx.md", "files": [ "files/components/Greeting.jsx" ] },
+        { "title": "Props", "page": "pages/02-02-props.md", "files": [ "files/components/ProductCard.jsx" ] },
+        { "title": "Rendering lists and conditions", "page": "pages/02-03-lists.md", "files": [ "files/components/TodoList.jsx" ] }
+      ]
+    },
+    {
+      "title": "State and Events", "chapter": true, "page": "pages/03-state.md",
+      "items": [
+        { "title": "State with useState", "page": "pages/03-01-use-state.md", "files": [ "files/state/Counter.jsx" ] },
+        { "title": "Handling events", "page": "pages/03-02-events.md" },
+        { "title": "Forms and controlled inputs", "page": "pages/03-03-forms.md", "files": [ "files/state/SignupForm.jsx" ] },
+        {
+          "title": "Sharing state", "chapter": true, "page": "pages/03-04-sharing-state.md",
+          "items": [
+            { "title": "Lifting state up", "page": "pages/03-04-01-lifting.md", "files": [ "files/state/TemperatureConverter.jsx" ] },
+            { "title": "Complex state with useReducer", "page": "pages/03-04-02-reducer.md", "files": [ "files/state/cartReducer.js", "files/state/Cart.jsx" ] }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Effects and Data", "chapter": true, "page": "pages/04-effects.md",
+      "items": [
+        { "title": "Synchronizing with useEffect", "page": "pages/04-01-use-effect.md", "files": [ "files/effects/Clock.jsx" ] },
+        { "title": "Fetching data", "page": "pages/04-02-fetching.md", "files": [ "files/effects/UserList.jsx" ] },
+        { "title": "Writing custom hooks", "page": "pages/04-03-custom-hooks.md", "files": [ "files/effects/useLocalStorage.js", "files/effects/useFetch.js" ] }
+      ]
+    },
+    {
+      "title": "Growing Your App", "chapter": true, "page": "pages/05-growing.md",
+      "items": [
+        { "title": "Context", "page": "pages/05-01-context.md", "files": [ "files/growing/ThemeContext.jsx" ] },
+        { "title": "Performance: memo, useMemo and useCallback", "page": "pages/05-02-performance.md" },
+        { "title": "Routing with React Router", "page": "pages/05-03-routing.md", "files": [ "files/growing/routes.jsx" ] },
+        { "title": "Final project: a notes app", "page": "pages/05-04-project.md", "files": [ "files/growing/NotesApp.jsx", "files/growing/notes.css" ] }
+      ]
+    }
+  ]
+}

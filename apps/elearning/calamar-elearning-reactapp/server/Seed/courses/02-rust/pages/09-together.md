@@ -1,0 +1,1 @@
+You have covered the core of the language. In this final chapter you will combine structs, enums, pattern matching, error handling, collections, iterators and file I/O into a small but real command-line program.

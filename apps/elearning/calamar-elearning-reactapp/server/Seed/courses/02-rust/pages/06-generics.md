@@ -1,0 +1,1 @@
+This chapter is about writing code once and using it with many types. **Generics** abstract over types, **traits** describe shared behaviour, and **lifetimes** tell the compiler how references relate to each other. All three are resolved at compile time, so the abstraction costs nothing at run time.

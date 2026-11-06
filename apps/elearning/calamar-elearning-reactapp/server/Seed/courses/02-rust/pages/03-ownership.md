@@ -1,0 +1,1 @@
+Ownership is Rust's most distinctive feature. It is how Rust guarantees memory safety **without a garbage collector**: the compiler tracks, for every value, who is responsible for freeing it, and checks that nothing uses a value after it is gone. Take your time with this chapter — everything else in Rust builds on it.

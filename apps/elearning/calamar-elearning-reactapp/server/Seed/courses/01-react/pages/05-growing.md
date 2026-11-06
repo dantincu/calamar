@@ -1,0 +1,1 @@
+You now know the core of React. This last chapter covers the tools you reach for as an application grows: **context** to avoid passing props through many levels, the **performance** helpers, **routing** between pages, and a final project that combines everything.

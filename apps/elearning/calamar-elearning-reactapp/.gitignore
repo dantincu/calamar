@@ -1,0 +1,11 @@
+# development data folders and logs
+.dev-data/
+.dev-server.log
+
+# server build output
+server/bin/
+server/obj/
+
+# client
+client/node_modules/
+client/dist/

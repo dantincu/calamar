@@ -1,0 +1,1 @@
+Concurrency bugs — data races, unsynchronized access — are notoriously hard to find. Rust's ownership and type system catch most of them **at compile time**. The community calls this *fearless concurrency*: you still have to design your program well, but the compiler won't let you share data between threads unsafely.

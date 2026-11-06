@@ -1,0 +1,76 @@
+{
+  "title": "Learn Rust: Safe, Fast and Fearless",
+  "description": "A practical introduction to the Rust programming language. Starting from installing the toolchain, you will learn the language basics, Rust's ownership and borrowing model, structs, enums and pattern matching, error handling, generics, traits and lifetimes, collections and iterators, and safe concurrency, and finish by writing a command-line todo app. Each lesson comes with runnable sample code.",
+  "category": [ "Software Engineering", "Systems Programming" ],
+  "tags": [ "rust", "systems", "beginner", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Getting Started", "chapter": true, "page": "pages/01-getting-started.md",
+      "items": [
+        { "title": "Installing Rust", "page": "pages/01-01-install.md" },
+        { "title": "Hello, Cargo!", "page": "pages/01-02-cargo.md", "files": [ "files/hello/Cargo.toml", "files/hello/main.rs" ] }
+      ]
+    },
+    {
+      "title": "Language Basics", "chapter": true, "page": "pages/02-basics.md",
+      "items": [
+        { "title": "Variables and mutability", "page": "pages/02-01-variables.md", "files": [ "files/basics/variables.rs" ] },
+        { "title": "Data types", "page": "pages/02-02-types.md", "files": [ "files/basics/types.rs" ] },
+        { "title": "Functions and control flow", "page": "pages/02-03-control-flow.md", "files": [ "files/basics/fizzbuzz.rs" ] }
+      ]
+    },
+    {
+      "title": "Ownership", "chapter": true, "page": "pages/03-ownership.md",
+      "items": [
+        { "title": "The ownership rules", "page": "pages/03-01-ownership.md", "files": [ "files/ownership/ownership.rs" ] },
+        { "title": "References and borrowing", "page": "pages/03-02-borrowing.md", "files": [ "files/ownership/borrowing.rs" ] },
+        { "title": "Slices", "page": "pages/03-03-slices.md", "files": [ "files/ownership/first_word.rs" ] }
+      ]
+    },
+    {
+      "title": "Structs, Enums and Pattern Matching", "chapter": true, "page": "pages/04-types.md",
+      "items": [
+        { "title": "Structs and methods", "page": "pages/04-01-structs.md", "files": [ "files/types/rectangle.rs" ] },
+        { "title": "Enums and match", "page": "pages/04-02-enums.md", "files": [ "files/types/shapes.rs" ] },
+        { "title": "Option and if let", "page": "pages/04-03-option.md" }
+      ]
+    },
+    {
+      "title": "Error Handling", "chapter": true, "page": "pages/05-errors.md",
+      "items": [
+        { "title": "panic! and Result", "page": "pages/05-01-result.md", "files": [ "files/errors/read_config.rs" ] },
+        { "title": "The ? operator and custom errors", "page": "pages/05-02-custom-errors.md", "files": [ "files/errors/errors.rs" ] }
+      ]
+    },
+    {
+      "title": "Generics, Traits and Lifetimes", "chapter": true, "page": "pages/06-generics.md",
+      "items": [
+        { "title": "Generics", "page": "pages/06-01-generics.md" },
+        { "title": "Traits", "page": "pages/06-02-traits.md", "files": [ "files/generics/traits.rs" ] },
+        { "title": "Lifetimes", "page": "pages/06-03-lifetimes.md", "files": [ "files/generics/longest.rs" ] }
+      ]
+    },
+    {
+      "title": "Collections and Iterators", "chapter": true, "page": "pages/07-collections.md",
+      "items": [
+        { "title": "Vec, String and HashMap", "page": "pages/07-01-collections.md", "files": [ "files/collections/word_count.rs" ] },
+        { "title": "Closures and iterators", "page": "pages/07-02-iterators.md", "files": [ "files/collections/iterators.rs" ] }
+      ]
+    },
+    {
+      "title": "Fearless Concurrency", "chapter": true, "page": "pages/08-concurrency.md",
+      "items": [
+        { "title": "Threads and channels", "page": "pages/08-01-threads.md", "files": [ "files/concurrency/channels.rs" ] },
+        { "title": "Shared state with Arc and Mutex", "page": "pages/08-02-shared-state.md", "files": [ "files/concurrency/counter.rs" ] }
+      ]
+    },
+    {
+      "title": "Putting It All Together", "chapter": true, "page": "pages/09-together.md",
+      "items": [
+        { "title": "Final project: a command-line todo app", "page": "pages/09-01-project.md", "files": [ "files/todo/Cargo.toml", "files/todo/main.rs" ] }
+      ]
+    }
+  ]
+}

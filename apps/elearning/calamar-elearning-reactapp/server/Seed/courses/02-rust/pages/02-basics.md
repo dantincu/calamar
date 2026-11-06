@@ -1,0 +1,1 @@
+This chapter covers the building blocks shared by most languages — variables, types, functions, conditions and loops — and the places where Rust does things its own way: immutability by default, expressions everywhere, and a strict but helpful type system.

@@ -1,0 +1,1 @@
+So far our components always show the same thing. **State** gives a component memory, and **events** let users change it. This chapter covers `useState`, event handlers, forms, and the techniques for sharing state between components.

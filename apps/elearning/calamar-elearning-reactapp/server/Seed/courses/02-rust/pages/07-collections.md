@@ -1,0 +1,1 @@
+The standard library's collections store data on the heap and grow as needed. Combined with **closures** and **iterators**, they let you write data processing code that is both expressive and as fast as hand-written loops.

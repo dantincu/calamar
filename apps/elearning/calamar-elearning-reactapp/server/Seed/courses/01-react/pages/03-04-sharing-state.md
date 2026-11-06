@@ -1,0 +1,1 @@
+State lives in one component, but often several components need the same data. This sub-chapter shows the two basic tools for that: **lifting state up** to a common parent, and organizing complex updates with **`useReducer`**.

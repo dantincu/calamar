@@ -1,0 +1,13 @@
+.notes-app { display: flex; height: 100vh; font-family: system-ui, sans-serif; }
+.notes-app aside { width: 280px; border-right: 1px solid #ddd; display: flex; flex-direction: column; }
+.notes-app .toolbar { display: flex; gap: 6px; padding: 8px; }
+.notes-app .toolbar input { flex: 1; }
+.note-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; }
+.note-list li { padding: 10px 12px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; flex-direction: column; }
+.note-list li span { color: #777; font-size: 13px; }
+.note-list li.selected { background: #e8f0fe; }
+.editor { flex: 1; display: flex; flex-direction: column; padding: 16px; gap: 8px; }
+.editor input { font-size: 22px; border: 0; outline: none; }
+.editor textarea { flex: 1; border: 0; outline: none; resize: none; font: inherit; }
+.editor footer { display: flex; justify-content: space-between; align-items: center; }
+.empty { color: #999; padding: 16px; }

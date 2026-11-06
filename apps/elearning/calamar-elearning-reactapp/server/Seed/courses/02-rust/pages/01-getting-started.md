@@ -1,0 +1,1 @@
+Before writing Rust you need the toolchain: the compiler `rustc`, the package manager and build tool **Cargo**, and `rustup`, which installs and updates them. This chapter gets you from nothing to a running program.
