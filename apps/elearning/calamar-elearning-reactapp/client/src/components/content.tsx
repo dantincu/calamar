@@ -2,6 +2,8 @@ import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 import { Link } from 'react-router';
 import { formatSize, type NoteFile, type OutlineNode } from '../api';
 import { Modal } from './ui';
@@ -10,8 +12,10 @@ export function Markdown({ text }: { text: string }) {
   return (
     <div className="markdown">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[[rehypeHighlight, { detect: true, ignoreMissing: true }]]}
+        // Math: $inline$ and $$display$$ (or a ```math block), rendered with KaTeX. A formula with an error is shown in red
+        // instead of breaking the page.
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[[rehypeKatex, { throwOnError: false, strict: false }], [rehypeHighlight, { detect: true, ignoreMissing: true }]]}
         components={{ a: ({ href, children }) => <a href={href} target={href?.startsWith('http') ? '_blank' : undefined} rel="noreferrer">{children}</a> }}
       >
         {text}

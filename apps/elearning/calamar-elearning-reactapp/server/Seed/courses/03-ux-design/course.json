@@ -1,0 +1,78 @@
+{
+  "title": "UX Design: From Research to Accessible Color Palettes",
+  "description": "A practical introduction to user experience design for people who build web apps. You will learn the UX process (research, information architecture, wireframes, prototypes and usability testing), the visual fundamentals (hierarchy, type scales, spacing grids) and the laws of interaction, with their formulas. The longest chapter builds a complete color palette for a web app from first principles: the sRGB transfer function, HSL and why its lightness misleads, the perceptual OKLab and OKLCH spaces, WCAG contrast math, tonal scales placed by contrast, neutrals, semantic colors, design tokens, dark mode and color vision deficiencies. Sample JavaScript files implement every formula and generate a palette that checks its own contrast.",
+  "category": [ "Design", "UX Design" ],
+  "tags": [ "design", "ux", "color", "accessibility", "css", "web", "beginner", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Foundations of UX", "chapter": true, "page": "pages/01-foundations.md",
+      "items": [
+        { "title": "What is UX design?", "page": "pages/01-01-what-is-ux.md" },
+        { "title": "User research", "page": "pages/01-02-research.md" },
+        { "title": "Usability heuristics", "page": "pages/01-03-heuristics.md" }
+      ]
+    },
+    {
+      "title": "Structure and Interaction", "chapter": true, "page": "pages/02-structure.md",
+      "items": [
+        { "title": "Information architecture and user flows", "page": "pages/02-01-ia-flows.md" },
+        { "title": "Wireframes and prototypes", "page": "pages/02-02-wireframes.md" },
+        { "title": "Fitts's and Hick's laws", "page": "pages/02-03-laws.md", "files": [ "files/ux/ux-math.js" ] }
+      ]
+    },
+    {
+      "title": "Visual Design Fundamentals", "chapter": true, "page": "pages/03-visual.md",
+      "items": [
+        { "title": "Visual hierarchy and Gestalt", "page": "pages/03-01-hierarchy.md" },
+        { "title": "Typography and type scales", "page": "pages/03-02-typography.md" },
+        { "title": "Spacing and grids", "page": "pages/03-03-spacing.md" }
+      ]
+    },
+    {
+      "title": "Color Palettes for Web Apps", "chapter": true, "page": "pages/04-color.md",
+      "items": [
+        { "title": "How screens make color", "page": "pages/04-01-screen-color.md", "files": [ "files/color/color.js" ] },
+        { "title": "HSL, and why its lightness lies", "page": "pages/04-02-hsl.md", "files": [ "files/color/color.js" ] },
+        { "title": "Perceptual color: OKLab and OKLCH", "page": "pages/04-03-oklch.md", "files": [ "files/color/color.js" ] },
+        { "title": "Contrast and accessibility", "page": "pages/04-04-contrast.md", "files": [ "files/color/color.js" ] },
+        {
+          "title": "Building the palette", "chapter": true, "page": "pages/04-05-building.md",
+          "items": [
+            { "title": "The brand color and color harmonies", "page": "pages/04-05-01-brand.md", "files": [ "files/color/color.js" ] },
+            { "title": "Tonal scales, placed by contrast", "page": "pages/04-05-02-scales.md", "files": [ "files/color/scale.js", "files/color/color.js" ] },
+            { "title": "Neutrals", "page": "pages/04-05-03-neutrals.md", "files": [ "files/color/scale.js" ] },
+            { "title": "Semantic colors", "page": "pages/04-05-04-semantic.md" }
+          ]
+        },
+        {
+          "title": "Applying the palette", "chapter": true, "page": "pages/04-06-applying.md",
+          "items": [
+            { "title": "Design tokens", "page": "pages/04-06-01-tokens.md", "files": [ "files/color/build-palette.js", "files/color/palette.css" ] },
+            { "title": "Dark mode", "page": "pages/04-06-02-dark-mode.md", "files": [ "files/color/palette.css" ] },
+            { "title": "States and transparency", "page": "pages/04-06-03-states.md" },
+            { "title": "Color vision deficiencies", "page": "pages/04-06-04-color-vision.md" },
+            { "title": "Testing and documenting the palette", "page": "pages/04-06-05-testing.md", "files": [ "files/color/palette-demo.html", "files/color/palette.css" ] }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Testing with Users", "chapter": true, "page": "pages/05-testing.md",
+      "items": [
+        { "title": "Usability testing", "page": "pages/05-01-usability-testing.md", "files": [ "files/ux/ux-math.js" ] },
+        { "title": "Measuring usability", "page": "pages/05-02-measuring.md", "files": [ "files/ux/ux-math.js" ] }
+      ]
+    },
+    {
+      "title": "Putting It Together", "chapter": true, "page": "pages/06-project.md",
+      "items": [
+        {
+          "title": "Project: a palette for a task-tracking app", "page": "pages/06-01-palette-project.md",
+          "files": [ "files/color/color.js", "files/color/scale.js", "files/color/build-palette.js", "files/color/palette.css", "files/color/palette-demo.html" ]
+        }
+      ]
+    }
+  ]
+}

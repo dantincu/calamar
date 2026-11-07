@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router';
 import { AuthProvider } from './auth';
 import App from './App';
 import 'highlight.js/styles/github.css';
+import 'katex/dist/katex.min.css';
 import './styles.css';
 
 createRoot(document.getElementById('root')!).render(

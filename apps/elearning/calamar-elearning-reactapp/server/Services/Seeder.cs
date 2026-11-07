@@ -9,12 +9,17 @@ namespace Calamar.ELearning.Services;
 
 /// <summary>
 /// First run: the three starting accounts, the starting categories and tags (Seed/catalog.json) and the starting
-/// courses (Seed/courses/*/course.json), owned by the starting content creator.
+/// courses (Seed/courses/*/course.json), owned by the starting content creator. Each starter course is imported once
+/// (meta key "seed.course.&lt;folder&gt;"), so a course added to Seed/courses later reaches existing installations too,
+/// while a starter course that its creator deleted is not brought back.
 /// </summary>
 public sealed class Seeder(Db db, NoteStore notes, UserService users, CatalogService catalog, CourseService courses,
     IOptions<AppOptions> options, ILogger<Seeder> log)
 {
     const string SeedKey = "seed.v1";
+    const string CourseKeyPrefix = "seed.course.";
+    /// <summary>The starter courses that the first version imported all at once, under <see cref="SeedKey"/>.</summary>
+    static readonly string[] V1Courses = ["01-react", "02-rust"];
     static readonly JsonSerializerOptions Json = new() { PropertyNameCaseInsensitive = true, ReadCommentHandling = JsonCommentHandling.Skip };
 
     sealed record CatalogSeed(List<CategorySeed> Categories, List<string> Tags);
@@ -27,11 +32,16 @@ public sealed class Seeder(Db db, NoteStore notes, UserService users, CatalogSer
         db.Migrate();
         notes.EnsureNotebook("Calamar e-learning courses");
         users.EnsureSeedUsers();
-        if (db.GetMeta(SeedKey) != null) return;
 
         var seedDir = Path.Combine(AppContext.BaseDirectory, "Seed");
         var catalogFile = Path.Combine(seedDir, "catalog.json");
-        if (File.Exists(catalogFile))
+        var v1Done = db.GetMeta(SeedKey);
+        if (v1Done != null)
+        {
+            foreach (var name in V1Courses)
+                if (db.GetMeta(CourseKeyPrefix + name) == null) db.SetMeta(CourseKeyPrefix + name, v1Done);
+        }
+        else if (File.Exists(catalogFile))
         {
             var seed = JsonSerializer.Deserialize<CatalogSeed>(await File.ReadAllTextAsync(catalogFile), Json)!;
             void Add(List<CategorySeed> list, List<string> path)
@@ -54,12 +64,14 @@ public sealed class Seeder(Db db, NoteStore notes, UserService users, CatalogSer
             foreach (var dir in Directory.GetDirectories(coursesDir).Order())
             {
                 var file = Path.Combine(dir, "course.json");
-                if (!File.Exists(file)) continue;
+                var key = CourseKeyPrefix + Path.GetFileName(dir);
+                if (!File.Exists(file) || db.GetMeta(key) != null) continue;
                 var seed = JsonSerializer.Deserialize<CourseSeed>(await File.ReadAllTextAsync(file), Json)!;
                 await ImportCourse(creator, dir, seed);
+                db.SetMeta(key, Db.Now());
             }
         }
-        db.SetMeta(SeedKey, Db.Now());
+        if (v1Done == null) db.SetMeta(SeedKey, Db.Now());
     }
 
     async Task ImportCourse(UserRow creator, string dir, CourseSeed seed)

@@ -16,7 +16,7 @@
       "name": "Data Science",
       "children": [ { "name": "Machine Learning" }, { "name": "Data Analysis" } ]
     },
-    { "name": "Design" }
+    { "name": "Design", "children": [ { "name": "UX Design" }, { "name": "Visual Design" } ] }
   ],
-  "tags": [ "beginner", "intermediate", "javascript", "react", "frontend", "rust", "systems", "web", "hands-on" ]
+  "tags": [ "beginner", "intermediate", "javascript", "react", "frontend", "rust", "systems", "web", "hands-on", "design", "ux", "color", "accessibility", "css" ]
 }

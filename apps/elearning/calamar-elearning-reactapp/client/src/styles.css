@@ -199,6 +199,9 @@ fieldset.choice legend { font-weight: 500; margin-bottom: 4px; }
 .markdown th { background: var(--surface-2); }
 .markdown blockquote { margin: 12px 0; padding: 8px 16px; border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
 .markdown blockquote p { margin: 4px 0; }
+.markdown .katex { font-size: 1.08em; }
+.markdown .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; margin: 14px 0; }
+.markdown .katex-error { color: var(--danger, #c62828); }
 .markdown img { max-width: 100%; }
 
 .files ul { list-style: none; padding: 0; margin: 0; border: 1px solid var(--border); border-radius: 8px; }

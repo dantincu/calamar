@@ -40,6 +40,10 @@ The three starting accounts have no password: the first sign-in asks for one. Cr
 
 Passwords are stored in the SQLite database as salted PBKDF2-SHA512 hashes (210,000 iterations), which can't be turned back into the password. That is the standard way to store passwords, and it is how this app meets the spec's "store passwords encrypted".
 
+## Writing pages
+
+Pages are Markdown with GitHub extensions (tables, task lists, strikethrough), syntax-highlighted code blocks, and **math**: `$…$` inline and `$$…$$` (or a ` ```math ` block) for display formulas, rendered with KaTeX. An invalid formula is shown in red instead of breaking the page. A lone `$` (a price) is left alone; write `\$` if two of them on one line pair up by accident.
+
 ## Storage
 
 **SQLite** (`local-data/calamar-elearning.sqlite`): users, reset codes, categories, tags, courses (catalog data plus a pointer to their notes), course tags, subscriptions.
@@ -71,9 +75,10 @@ The notes are the source of truth for course content. The database holds the cat
 
 ## Starter content
 
-On first run the server imports (once) the categories and tags in `server/Seed/catalog.json`, and the courses in `server/Seed/courses/*/course.json`, owned by `dan.tincu.work@gmail.com`:
+On first run the server imports the categories and tags in `server/Seed/catalog.json`. At every start it imports any course in `server/Seed/courses/*/course.json` that it hasn't imported before (each is remembered in the database's `meta` table as `seed.course.<folder>`), owned by `dan.tincu.work@gmail.com`. So a course added to `Seed/courses` reaches an existing installation on its next deployment, while a starter course its creator deleted doesn't come back.
 
 - **Learn React: From Components to Complete Apps**: 5 chapters (plus a sub-chapter), 18 pages, sample `.jsx`/`.js` files.
 - **Learn Rust: Safe, Fast and Fearless**: 9 chapters, 22 pages, sample `.rs` programs (all compile with `rustc --edition 2024`).
+- **UX Design: From Research to Accessible Color Palettes**: 6 chapters (plus 2 sub-chapters), 26 pages. Its color chapter derives a web app palette mathematically (sRGB, HSL, OKLab/OKLCH, WCAG contrast). The sample files are `color.js`, `scale.js`, `build-palette.js` (which generates `palette.css` and checks its contrast), `palette-demo.html` and `ux-math.js`.
 
 If the course notes already exist on disk (for example after the database was deleted), the import skips them rather than duplicating them.

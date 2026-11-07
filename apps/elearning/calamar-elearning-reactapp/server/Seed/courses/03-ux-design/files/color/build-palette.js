@@ -1,0 +1,132 @@
+// build-palette.js: turns a handful of base colors into a complete palette for a web app.
+//
+//   node build-palette.js > palette.css     the CSS custom properties (primitives + light and dark semantic tokens)
+//   node build-palette.js --report          the contrast of every text/background pair the tokens promise
+//
+// Needs color.js and scale.js next to it (Node 18 or later; the "type": "module" is implied by the imports,
+// so save it as build-palette.mjs if your Node complains).
+import { contrastRatio, parseHex, rgbToOklch } from './color.js';
+import { generateScale, neutralScale } from './scale.js';
+
+// 1. The inputs: one brand color and the hues that carry meaning.
+const BASES = {
+  brand: '#4f46e5',
+  success: '#16a34a',
+  warning: '#d97706',
+  danger: '#dc2626',
+  info: '#0284c7',
+};
+
+// 2. Primitive scales: brand-50 ... brand-950, and so on.
+const scales = Object.fromEntries(Object.entries(BASES).map(([name, hex]) => [name, generateScale(hex)]));
+scales.neutral = neutralScale(rgbToOklch(parseHex(BASES.brand)).h);
+
+const ref = (name, step) => `var(--${name}-${step})`;
+const hexOf = (name, step) => scales[name].find((s) => s.step === step).hex;
+
+// 3. Semantic tokens: what components use. Each entry: token -> [scale, step] or a literal color.
+const light = {
+  'color-bg': ['neutral', 50],
+  'color-surface': '#ffffff',
+  'color-border': ['neutral', 200],          // decoration only (dividers, card edges)
+  'color-border-strong': ['neutral', 500],   // input borders: 3:1 (WCAG 1.4.11)
+  'color-text': ['neutral', 900],
+  'color-text-muted': ['neutral', 700],     // 600 would give 4.6 / 1.05 = 4.38 on color-bg: too little
+  'color-primary': ['brand', 600],
+  'color-primary-hover': ['brand', 700],
+  'color-primary-active': ['brand', 800],
+  'color-on-primary': '#ffffff',
+  'color-primary-soft': ['brand', 50],
+  'color-on-primary-soft': ['brand', 700],
+  'color-focus-ring': ['brand', 500],
+  'color-link': ['brand', 700],
+};
+for (const k of ['success', 'warning', 'danger', 'info']) {
+  light[`color-${k}`] = [k, 600];
+  light[`color-${k}-soft`] = [k, 50];
+  light[`color-on-${k}-soft`] = [k, 800];
+}
+
+const dark = {
+  'color-bg': ['neutral', 950],
+  'color-surface': ['neutral', 900],
+  'color-border': ['neutral', 800],
+  'color-border-strong': ['neutral', 500],
+  'color-text': ['neutral', 50],
+  'color-text-muted': ['neutral', 300],
+  'color-primary': ['brand', 400],
+  'color-primary-hover': ['brand', 300],
+  'color-primary-active': ['brand', 200],
+  'color-on-primary': ['neutral', 950],
+  'color-primary-soft': ['brand', 900],
+  'color-on-primary-soft': ['brand', 200],
+  'color-focus-ring': ['brand', 400],
+  'color-link': ['brand', 300],
+};
+for (const k of ['success', 'warning', 'danger', 'info']) {
+  dark[`color-${k}`] = [k, 400];
+  dark[`color-${k}-soft`] = [k, 900];
+  dark[`color-on-${k}-soft`] = [k, 200];
+}
+
+// 4. The promises: [foreground token, background token, minimum ratio].
+const PAIRS = [
+  ['color-text', 'color-bg', 4.5], ['color-text', 'color-surface', 4.5],
+  ['color-text-muted', 'color-bg', 4.5], ['color-text-muted', 'color-surface', 4.5],
+  ['color-link', 'color-surface', 4.5], ['color-link', 'color-bg', 4.5],
+  ['color-on-primary', 'color-primary', 4.5], ['color-on-primary', 'color-primary-hover', 4.5],
+  ['color-on-primary', 'color-primary-active', 4.5],
+  ['color-on-primary-soft', 'color-primary-soft', 4.5],
+  ['color-border-strong', 'color-surface', 3], ['color-border-strong', 'color-bg', 3],
+  ['color-focus-ring', 'color-surface', 3], ['color-focus-ring', 'color-bg', 3],
+  ...['success', 'warning', 'danger', 'info'].flatMap((k) => [
+    [`color-${k}`, 'color-surface', 3],                // icons and borders
+    [`color-on-${k}-soft`, `color-${k}-soft`, 4.5],     // alert text on its tinted background
+  ]),
+];
+
+const resolve = (tokens, name) => {
+  const v = tokens[name];
+  return typeof v === 'string' ? v : hexOf(v[0], v[1]);
+};
+const css = (tokens) => Object.entries(tokens)
+  .map(([k, v]) => `  --${k}: ${typeof v === 'string' ? v : ref(v[0], v[1])};`).join('\n');
+
+if (process.argv.includes('--report')) {
+  let failures = 0;
+  for (const [mode, tokens] of [['light', light], ['dark', dark]]) {
+    console.log(`\n${mode}`);
+    for (const [fg, bg, min] of PAIRS) {
+      const cr = contrastRatio(parseHex(resolve(tokens, fg)), parseHex(resolve(tokens, bg)));
+      const ok = cr >= min;
+      if (!ok) failures++;
+      console.log(`  ${ok ? 'ok  ' : 'FAIL'} ${cr.toFixed(2).padStart(5)} >= ${min}  ${fg} on ${bg}`);
+    }
+  }
+  console.log(failures ? `\n${failures} pair(s) below their minimum` : '\nall pairs pass');
+  process.exitCode = failures ? 1 : 0;
+} else {
+  const primitives = Object.entries(scales).map(([name, steps]) =>
+    steps.map((s) => `  --${name}-${s.step}: ${s.hex}; /* ${s.oklch}, ${s.contrastOnWhite.toFixed(2)}:1 on white */`).join('\n'));
+  console.log(`/* Generated by build-palette.js. Primitives: never use them in components; use the semantic tokens. */
+:root {
+${primitives.join('\n\n')}
+}
+
+:root, [data-theme="light"] {
+  color-scheme: light;
+${css(light)}
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+${css(dark).replaceAll('\n  ', '\n    ').replace(/^ {2}/, '    ')}
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+${css(dark)}
+}`);
+}
