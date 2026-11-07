@@ -1,0 +1,17 @@
+{
+  "_about": "Amounts in grams, as bought (dry oats, rice and legumes; raw meat and vegetables). 1 egg is about 55 g without the shell.",
+  "days": {
+    "typical": {
+      "breakfast": { "white bread": 100, "telemea": 60, "sugar": 10 },
+      "lunch":     { "chicken legs": 250, "potato": 300, "sunflower oil": 25, "white bread": 50, "salt": 2 },
+      "snack":     { "white bread": 60, "sugar": 25, "sunflower oil": 15 },
+      "dinner":    { "pasta": 120, "telemea": 50, "sunflower oil": 10, "salt": 1 }
+    },
+    "improved": {
+      "breakfast": { "oats": 60, "milk": 250, "apple": 150, "walnuts": 15 },
+      "lunch":     { "lentils": 70, "carrot": 80, "onion": 60, "canned tomatoes": 150, "sunflower oil": 10, "wholemeal bread": 90, "salt": 1 },
+      "snack":     { "yogurt": 150, "plums": 150 },
+      "dinner":    { "egg": 110, "spinach": 150, "potato": 200, "cabbage": 150, "sunflower oil": 10, "telemea": 30 }
+    }
+  }
+}

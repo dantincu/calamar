@@ -1,0 +1,56 @@
+{
+  "title": "Nutrition Fundamentals: Eating Well, Backed by Evidence",
+  "description": "An evidence-based introduction to nutrition for adults who want to eat well without fads. You will learn what a calorie is and how to estimate your own energy needs (Mifflin-St Jeor, activity levels, BMI and waist-to-height ratio), how much protein, carbohydrate, fiber and fat you need and which kinds matter, the vitamins and minerals people actually run short of (vitamin D, iron, B12, iodine), and how water, salt and alcohol fit in. You will then build healthy meals with the plate model, read EU food labels, eat well on plant-based diets and during the Orthodox fasting periods, understand why weight loss slows down, and learn to judge nutrition headlines. The formulas come with small Node.js tools, and the course ends by checking and fixing a real day of meals. General education, not medical advice.",
+  "category": [ "Health and Lifestyle", "Nutrition" ],
+  "tags": [ "nutrition", "health", "beginner", "math", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Energy", "chapter": true, "page": "pages/01-energy.md",
+      "items": [
+        { "title": "Calories and energy balance", "page": "pages/01-01-calories.md" },
+        { "title": "How much energy you need", "page": "pages/01-02-energy-needs.md", "files": [ "files/calc/nutrition-calc.js" ] }
+      ]
+    },
+    {
+      "title": "Macronutrients", "chapter": true, "page": "pages/02-macros.md",
+      "items": [
+        { "title": "Protein", "page": "pages/02-01-protein.md" },
+        { "title": "Carbohydrates and fiber", "page": "pages/02-02-carbs-fiber.md" },
+        { "title": "Fats", "page": "pages/02-03-fats.md" }
+      ]
+    },
+    {
+      "title": "Micronutrients and Water", "chapter": true, "page": "pages/03-micros.md",
+      "items": [
+        { "title": "Vitamins and minerals", "page": "pages/03-01-vitamins-minerals.md" },
+        { "title": "Water, salt and alcohol", "page": "pages/03-02-water-salt-alcohol.md" }
+      ]
+    },
+    {
+      "title": "Building a Healthy Diet", "chapter": true, "page": "pages/04-diet.md",
+      "items": [
+        { "title": "The healthy plate", "page": "pages/04-01-healthy-plate.md" },
+        { "title": "Reading food labels", "page": "pages/04-02-labels.md", "files": [ "files/labels/label-check.js" ] },
+        { "title": "Plant-based eating and fasting periods", "page": "pages/04-03-plant-based.md" }
+      ]
+    },
+    {
+      "title": "Weight and Evidence", "chapter": true, "page": "pages/05-evidence.md",
+      "items": [
+        { "title": "Weight change in practice", "page": "pages/05-01-weight.md", "files": [ "files/calc/weight-change.js" ] },
+        { "title": "Nutrition myths and how to read studies", "page": "pages/05-02-evidence.md" }
+      ]
+    },
+    {
+      "title": "Project: Check and Fix a Day of Meals", "chapter": true, "page": "pages/06-project.md",
+      "items": [
+        {
+          "title": "Checking a day of meals", "page": "pages/06-01-meal-plan.md",
+          "files": [ "files/plan/meal-plan.js", "files/plan/foods.json", "files/plan/day-plan.json", "files/calc/nutrition-calc.js" ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "_about": "Ingredients in grams as bought (with peel, bones and shells; one egg is about 60 g in the shell). The names match pantry-bucharest.json.",
+  "recipes": {
+    "ciorba-de-fasole": {
+      "name": "Ciorbă de fasole (bean soup)", "portions": 6,
+      "ingredients": { "white beans": 300, "onion": 150, "carrot": 150, "bell pepper": 100, "canned tomatoes": 400, "sunflower oil": 30, "borș": 500, "fresh herbs": 20, "salt": 4, "spices": 2 }
+    },
+    "mancare-de-linte": {
+      "name": "Mâncare de linte (lentil stew)", "portions": 4,
+      "ingredients": { "lentils": 300, "onion": 150, "carrot": 150, "garlic": 15, "canned tomatoes": 400, "sunflower oil": 25, "fresh herbs": 10, "salt": 3, "spices": 2 }
+    },
+    "varza-calita-cu-pui": {
+      "name": "Varză călită cu pulpe de pui (braised cabbage with chicken legs)", "portions": 4,
+      "ingredients": { "cabbage": 1200, "chicken legs": 800, "onion": 150, "tomato paste": 70, "sunflower oil": 20, "fresh herbs": 10, "salt": 4, "spices": 3 }
+    },
+    "tocanita-de-cartofi": {
+      "name": "Tocăniță de cartofi (potato stew)", "portions": 4,
+      "ingredients": { "potato": 1200, "onion": 200, "bell pepper": 150, "tomato paste": 70, "garlic": 10, "sunflower oil": 30, "fresh herbs": 15, "salt": 4, "spices": 2 }
+    },
+    "ghiveci": {
+      "name": "Ghiveci (vegetable stew)", "portions": 5,
+      "ingredients": { "potato": 400, "eggplant": 400, "zucchini": 400, "bell pepper": 300, "onion": 200, "carrot": 150, "frozen peas": 200, "canned tomatoes": 400, "sunflower oil": 40, "fresh herbs": 20, "salt": 4, "spices": 2 }
+    },
+    "fasole-batuta": {
+      "name": "Fasole bătută (bean dip) with caramelized onion", "portions": 6,
+      "ingredients": { "white beans": 400, "onion": 200, "garlic": 15, "sunflower oil": 50, "tomato paste": 30, "salt": 4, "spices": 2 }
+    },
+    "mamaliga-cu-branza-si-ou": {
+      "name": "Mămăligă cu brânză și ou (polenta with cheese and eggs)", "portions": 2,
+      "ingredients": { "cornmeal": 200, "telemea": 60, "egg": 240, "yogurt": 200, "sunflower oil": 5 }
+    },
+    "omleta-cu-spanac": {
+      "name": "Omletă cu spanac (spinach omelette)", "portions": 2,
+      "ingredients": { "egg": 300, "spinach": 300, "onion": 80, "sunflower oil": 10, "telemea": 40, "spices": 1 }
+    },
+    "macrou-cu-cartofi": {
+      "name": "Macrou la cuptor cu cartofi (baked mackerel with potatoes)", "portions": 4,
+      "ingredients": { "mackerel": 1000, "potato": 1000, "onion": 150, "garlic": 15, "sunflower oil": 30, "fresh herbs": 15, "salt": 4, "spices": 2 }
+    },
+    "terci-de-ovaz": {
+      "name": "Terci de ovăz (oat porridge with apple and walnuts)", "portions": 1,
+      "ingredients": { "oats": 60, "milk": 250, "apple": 150, "walnuts": 15 }
+    },
+    "salata-de-varza": {
+      "name": "Salată de varză (cabbage and carrot salad)", "portions": 4,
+      "ingredients": { "cabbage": 600, "carrot": 150, "sunflower oil": 20, "vinegar": 30, "fresh herbs": 10, "salt": 2 }
+    },
+    "salata-de-sfecla": {
+      "name": "Salată de sfeclă (beetroot salad with garlic)", "portions": 4,
+      "ingredients": { "beetroot": 800, "garlic": 10, "sunflower oil": 20, "vinegar": 30, "salt": 2 }
+    },
+    "iaurt-cu-fructe": {
+      "name": "Iaurt cu fructe și semințe (yogurt with fruit and seeds)", "portions": 1,
+      "ingredients": { "yogurt": 200, "plums": 150, "sunflower seeds": 15 }
+    }
+  }
+}

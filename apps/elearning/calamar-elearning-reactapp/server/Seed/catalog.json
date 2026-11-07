@@ -21,8 +21,10 @@
     {
       "name": "Security",
       "children": [ { "name": "Linux Security" }, { "name": "Windows Security" }, { "name": "Network and Web Security" }, { "name": "Cryptography" } ]
-    }
+    },
+    { "name": "Health and Lifestyle", "children": [ { "name": "Nutrition" }, { "name": "Cooking" } ] }
   ],
   "tags": [ "beginner", "intermediate", "advanced", "javascript", "react", "frontend", "rust", "systems", "web", "hands-on", "design", "ux", "color", "accessibility", "css",
-            "linux", "shell", "bash", "sysadmin", "windows", "powershell", "security", "networking", "cryptography", "math" ]
+            "linux", "shell", "bash", "sysadmin", "windows", "powershell", "security", "networking", "cryptography", "math",
+            "nutrition", "health", "cooking", "budget", "bucharest", "romanian-cuisine", "meal-prep" ]
 }

@@ -1,0 +1,51 @@
+{
+  "title": "Healthy Cooking on a Budget in Bucharest",
+  "description": "How to eat healthily in Bucharest for about 100 lei a week per person. You will learn where and when to shop (Obor and the other markets, the discount supermarkets, loyalty apps and weekly offers), what is in season in Romania month by month, and how to compare unit prices and the cost of protein, fiber and energy per leu. You will stock a budget pantry, store food safely without waste, batch cook two sessions a week, and cook dry beans, lentils and chickpeas. The recipes are Romanian classics in healthy, budget versions (ciorbă de fasole, mâncare de linte, tocăniță, ghiveci, varză călită cu pui, baked mackerel, mămăligă with cheese and eggs, salads and fasole bătută), each with its cost and nutrients per portion. The course ends with a costed, nutrition-checked week of menus and its shopping list, built with small Node.js tools that use a price file you can update from your own receipts.",
+  "category": [ "Health and Lifestyle", "Cooking" ],
+  "tags": [ "cooking", "budget", "bucharest", "romanian-cuisine", "meal-prep", "nutrition", "health", "beginner", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Shopping in Bucharest", "chapter": true, "page": "pages/01-shopping.md",
+      "items": [
+        { "title": "Markets and supermarkets", "page": "pages/01-01-where-to-shop.md" },
+        { "title": "Eating with the seasons", "page": "pages/01-02-seasons.md" },
+        { "title": "Unit prices and the cost of nutrients", "page": "pages/01-03-unit-prices.md", "files": [ "files/kitchen/unit-price.js", "files/kitchen/pantry-bucharest.json" ] }
+      ]
+    },
+    {
+      "title": "The Budget Pantry", "chapter": true, "page": "pages/02-pantry.md",
+      "items": [
+        { "title": "The staples", "page": "pages/02-01-staples.md", "files": [ "files/kitchen/pantry-bucharest.json" ] },
+        { "title": "Storing food and avoiding waste", "page": "pages/02-02-storage.md" }
+      ]
+    },
+    {
+      "title": "Techniques", "chapter": true, "page": "pages/03-techniques.md",
+      "items": [
+        { "title": "Batch cooking", "page": "pages/03-01-batch-cooking.md" },
+        { "title": "Cooking dry legumes", "page": "pages/03-02-legumes.md" }
+      ]
+    },
+    {
+      "title": "Recipes", "chapter": true, "page": "pages/04-recipes.md",
+      "items": [
+        { "title": "Soups: ciorbă de fasole", "page": "pages/04-01-soups.md", "files": [ "files/kitchen/recipe-cost.js", "files/kitchen/recipes.json", "files/kitchen/pantry-bucharest.json" ] },
+        { "title": "Stews: lentils, potatoes and ghiveci", "page": "pages/04-02-stews.md" },
+        { "title": "Chicken and fish", "page": "pages/04-03-chicken-fish.md" },
+        { "title": "Breakfasts and quick meals", "page": "pages/04-04-breakfasts-quick.md" },
+        { "title": "Salads and spreads", "page": "pages/04-05-salads-spreads.md" }
+      ]
+    },
+    {
+      "title": "Project: A Healthy Week for About 100 Lei", "chapter": true, "page": "pages/05-project.md",
+      "items": [
+        {
+          "title": "Planning and costing a week", "page": "pages/05-01-week-menu.md",
+          "files": [ "files/kitchen/recipe-cost.js", "files/kitchen/recipes.json", "files/kitchen/pantry-bucharest.json", "files/kitchen/week-menu.json", "files/kitchen/unit-price.js" ]
+        }
+      ]
+    }
+  ]
+}

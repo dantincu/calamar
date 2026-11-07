@@ -1,0 +1,47 @@
+{
+  "_about": "One person's week. Each meal is a list of recipe portions (by id from recipes.json) and extra foods in grams as bought (from pantry-bucharest.json). Cooked on Sunday and Wednesday: bean soup, lentil stew, braised cabbage, ghiveci and the salads keep 3-4 days in the fridge, or freeze them.",
+  "days": {
+    "Monday": {
+      "breakfast": { "recipes": { "terci-de-ovaz": 1 } },
+      "lunch":     { "recipes": { "ciorba-de-fasole": 1, "salata-de-varza": 1 }, "foods": { "wholemeal bread": 80 } },
+      "snack":     { "foods": { "apple": 150, "walnuts": 20 } },
+      "dinner":    { "recipes": { "omleta-cu-spanac": 1 }, "foods": { "wholemeal bread": 60 } }
+    },
+    "Tuesday": {
+      "breakfast": { "recipes": { "terci-de-ovaz": 1 } },
+      "lunch":     { "recipes": { "varza-calita-cu-pui": 1 }, "foods": { "wholemeal bread": 80 } },
+      "snack":     { "recipes": { "iaurt-cu-fructe": 1 } },
+      "dinner":    { "recipes": { "ciorba-de-fasole": 1 }, "foods": { "wholemeal bread": 60 } }
+    },
+    "Wednesday": {
+      "breakfast": { "recipes": { "terci-de-ovaz": 1 } },
+      "lunch":     { "recipes": { "mancare-de-linte": 1, "salata-de-sfecla": 1 }, "foods": { "wholemeal bread": 60 } },
+      "snack":     { "foods": { "apple": 150, "walnuts": 15 } },
+      "dinner":    { "recipes": { "varza-calita-cu-pui": 1 }, "foods": { "wholemeal bread": 60 } }
+    },
+    "Thursday": {
+      "breakfast": { "recipes": { "terci-de-ovaz": 1 } },
+      "lunch":     { "recipes": { "ghiveci": 1 }, "foods": { "wholemeal bread": 60, "egg": 120 } },
+      "snack":     { "recipes": { "iaurt-cu-fructe": 1 } },
+      "dinner":    { "recipes": { "mancare-de-linte": 1 }, "foods": { "wholemeal bread": 60 } }
+    },
+    "Friday": {
+      "breakfast": { "recipes": { "terci-de-ovaz": 1 } },
+      "lunch":     { "recipes": { "macrou-cu-cartofi": 1, "salata-de-varza": 1 } },
+      "snack":     { "foods": { "banana": 150, "sunflower seeds": 20 } },
+      "dinner":    { "recipes": { "fasole-batuta": 1 }, "foods": { "wholemeal bread": 80, "bell pepper": 150 } }
+    },
+    "Saturday": {
+      "breakfast": { "recipes": { "mamaliga-cu-branza-si-ou": 1 } },
+      "lunch":     { "recipes": { "ghiveci": 1 } },
+      "snack":     { "foods": { "apple": 150, "sunflower seeds": 20 } },
+      "dinner":    { "recipes": { "fasole-batuta": 1, "salata-de-sfecla": 1 }, "foods": { "wholemeal bread": 80 } }
+    },
+    "Sunday": {
+      "breakfast": { "recipes": { "terci-de-ovaz": 1 } },
+      "lunch":     { "recipes": { "tocanita-de-cartofi": 1, "salata-de-varza": 1 }, "foods": { "egg": 120 } },
+      "snack":     { "recipes": { "iaurt-cu-fructe": 1 } },
+      "dinner":    { "recipes": { "mancare-de-linte": 1 }, "foods": { "wholemeal bread": 60 } }
+    }
+  }
+}
