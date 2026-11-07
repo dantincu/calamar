@@ -1,0 +1,62 @@
+# /etc/systemd/system/myapp.service: a web application in a systemd sandbox.
+#
+#   sudo systemctl daemon-reload && sudo systemctl restart myapp
+#   systemd-analyze security myapp.service      # exposure score from 0 to 10: lower is better
+#
+# Add the restrictions one at a time and test after each: the app's logs tell you what it was denied.
+[Unit]
+Description=My web application (sandboxed)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/myapp --listen 127.0.0.1:8080
+Restart=on-failure
+
+# --- Identity: a throwaway user created at start, with no login and no files elsewhere ---
+DynamicUser=yes
+# Writable directories, created and owned by that user: /var/lib/myapp, /var/log/myapp, /var/cache/myapp
+StateDirectory=myapp
+LogsDirectory=myapp
+CacheDirectory=myapp
+UMask=0077
+
+# --- Privileges: none, and no way to gain any -------------------------------------------
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictSUIDSGID=yes
+
+# --- File system: read-only, except the directories above -------------------------------
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+
+# --- Kernel: no tuning, no modules, no logs, no clock -----------------------------------
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+ProcSubset=pid
+
+# --- System calls and other attack surface ---------------------------------------------
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+LockPersonality=yes
+# Blocks memory that is both writable and executable. Remove this line for JIT runtimes (Node.js, Java, .NET).
+MemoryDenyWriteExecute=yes
+
+# --- Resource limits: a compromised or buggy app can't starve the machine --------------
+MemoryMax=512M
+TasksMax=200
+
+[Install]
+WantedBy=multi-user.target

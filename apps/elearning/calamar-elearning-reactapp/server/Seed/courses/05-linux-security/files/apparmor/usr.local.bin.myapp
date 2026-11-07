@@ -1,0 +1,45 @@
+# /etc/apparmor.d/usr.local.bin.myapp: confines /usr/local/bin/myapp
+#
+#   sudo apparmor_parser -r /etc/apparmor.d/usr.local.bin.myapp   # load (or reload)
+#   sudo aa-complain /usr/local/bin/myapp    # log violations only: use while developing the profile
+#   sudo aa-enforce  /usr/local/bin/myapp    # deny violations
+#   sudo aa-status                           # which profiles are loaded, in which mode
+#   sudo journalctl -k | grep -i apparmor    # what was denied (or would have been, in complain mode)
+#   sudo aa-logprof                          # turn logged violations into suggested rules
+#
+# Everything not allowed here is denied: the app can't read SSH keys, /etc/shadow or other users' files,
+# or start a shell, even if an attacker takes it over.
+
+abi <abi/3.0>,
+include <tunables/global>
+
+profile myapp /usr/local/bin/myapp {
+  include <abstractions/base>
+  include <abstractions/nameservice>
+  include <abstractions/openssl>
+
+  # Network: TCP over IPv4 and IPv6 only
+  network inet stream,
+  network inet6 stream,
+
+  # The program itself: m allows mapping it into memory to execute it
+  /usr/local/bin/myapp mr,
+
+  # Its configuration: read-only
+  /etc/myapp/ r,
+  /etc/myapp/** r,
+
+  # Its data: read, write, and k (file locks)
+  /var/lib/myapp/ r,
+  /var/lib/myapp/** rwk,
+
+  # Its logs: append only (a), so it can't erase its own traces
+  /var/log/myapp/ r,
+  /var/log/myapp/*.log a,
+
+  # Explicit denials are logged even if a later rule would allow them
+  deny /etc/shadow r,
+  deny @{HOME}/.ssh/** rw,
+  deny /bin/** x,
+  deny /usr/bin/** x,
+}

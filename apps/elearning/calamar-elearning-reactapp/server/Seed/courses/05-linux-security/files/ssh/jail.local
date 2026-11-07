@@ -1,0 +1,28 @@
+# /etc/fail2ban/jail.local: local settings that survive package updates (never edit jail.conf)
+#
+#   sudo systemctl restart fail2ban
+#   sudo fail2ban-client status sshd          # banned addresses and counters
+#   sudo fail2ban-client set sshd unbanip 203.0.113.7
+
+[DEFAULT]
+# Ban after maxretry failures within findtime, for bantime
+maxretry = 5
+findtime = 10m
+bantime  = 1h
+# Repeat offenders get longer bans: 1h, 2h, 4h ... up to 1 week
+bantime.increment = true
+bantime.factor    = 2
+bantime.maxtime   = 1w
+# Never ban yourself: your office or VPN range, and localhost
+ignoreip = 127.0.0.1/8 ::1 192.0.2.0/24
+# Ban with nftables (use iptables-multiport on systems that still use iptables)
+banaction = nftables-multiport
+banaction_allports = nftables-allports
+
+[sshd]
+enabled = true
+# Read the systemd journal instead of /var/log/auth.log
+backend = systemd
+# "aggressive" also counts connections that fail before authentication (scanners, bad key exchange)
+mode    = aggressive
+port    = ssh

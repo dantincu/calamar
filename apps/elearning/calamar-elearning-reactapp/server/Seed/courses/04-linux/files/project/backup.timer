@@ -1,0 +1,15 @@
+# /etc/systemd/system/backup.timer
+# Enable with: sudo systemctl enable --now backup.timer
+# Check with:  systemctl list-timers backup.timer
+[Unit]
+Description=Daily backup at 02:30
+
+[Timer]
+OnCalendar=*-*-* 02:30:00
+# If the machine was off at 02:30, run as soon as it's back on
+Persistent=true
+# Spread the start over up to 10 minutes, so that many machines don't all start at once
+RandomizedDelaySec=10min
+
+[Install]
+WantedBy=timers.target

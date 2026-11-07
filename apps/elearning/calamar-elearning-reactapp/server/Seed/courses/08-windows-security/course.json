@@ -1,0 +1,56 @@
+{
+  "title": "Windows Security: Hardening, Monitoring and Auditing Windows",
+  "description": "A practical course on securing Windows PCs, for IT staff, administrators and power users. You will learn how Windows security works internally (SIDs, access tokens, integrity levels, UAC and access control lists), how accounts and credentials are attacked (NTLM, Kerberos, LSASS credential theft) and protected (Windows Hello, LAPS, LSA protection, Credential Guard), and how to configure Microsoft Defender and its attack surface reduction rules, the Windows Firewall, BitLocker with the TPM and Secure Boot, application control, updates, security baselines and PowerShell security. The monitoring chapter covers the event IDs that matter and Sysmon. The course ends with a security posture review using PowerShell scripts that you can run on your own PC: most are read-only, and the ones that change settings support -WhatIf.",
+  "category": [ "Security", "Windows Security" ],
+  "tags": [ "windows", "security", "powershell", "sysadmin", "intermediate", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "How Windows Security Works", "chapter": true, "page": "pages/01-architecture.md",
+      "items": [
+        { "title": "Accounts, tokens, integrity levels and UAC", "page": "pages/01-01-security-model.md" },
+        { "title": "Access control lists", "page": "pages/01-02-access-control.md", "files": [ "files/audit/Find-WeakPermissions.ps1" ] }
+      ]
+    },
+    {
+      "title": "Identity and Credentials", "chapter": true, "page": "pages/02-identity.md",
+      "items": [
+        { "title": "Accounts and sign-in", "page": "pages/02-01-accounts.md" },
+        { "title": "NTLM, Kerberos and credential theft", "page": "pages/02-02-credentials.md" }
+      ]
+    },
+    {
+      "title": "Protecting the System", "chapter": true, "page": "pages/03-protection.md",
+      "items": [
+        { "title": "Microsoft Defender and attack surface reduction", "page": "pages/03-01-defender-asr.md", "files": [ "files/hardening/Enable-AsrRules.ps1" ] },
+        { "title": "Windows Firewall", "page": "pages/03-02-firewall.md", "files": [ "files/hardening/Set-FirewallBaseline.ps1" ] },
+        { "title": "BitLocker, the TPM and Secure Boot", "page": "pages/03-03-bitlocker-boot.md" },
+        { "title": "Application control", "page": "pages/03-04-app-control.md" }
+      ]
+    },
+    {
+      "title": "Updates and Configuration", "chapter": true, "page": "pages/04-configuration.md",
+      "items": [
+        { "title": "Updates and security baselines", "page": "pages/04-01-updates-baselines.md" },
+        { "title": "PowerShell security", "page": "pages/04-02-powershell-security.md" }
+      ]
+    },
+    {
+      "title": "Monitoring and Detection", "chapter": true, "page": "pages/05-monitoring.md",
+      "items": [
+        { "title": "The event IDs that matter", "page": "pages/05-01-event-logs.md", "files": [ "files/monitoring/Get-LogonActivity.ps1" ] },
+        { "title": "Sysmon", "page": "pages/05-02-sysmon.md", "files": [ "files/monitoring/sysmon-starter.xml" ] }
+      ]
+    },
+    {
+      "title": "Project: A Security Posture Review", "chapter": true, "page": "pages/06-project.md",
+      "items": [
+        {
+          "title": "Reviewing a Windows PC", "page": "pages/06-01-posture-review.md",
+          "files": [ "files/audit/Get-SecurityPosture.ps1", "files/audit/Find-WeakPermissions.ps1", "files/hardening/Set-FirewallBaseline.ps1", "files/hardening/Enable-AsrRules.ps1", "files/monitoring/Get-LogonActivity.ps1", "files/monitoring/sysmon-starter.xml" ]
+        }
+      ]
+    }
+  ]
+}

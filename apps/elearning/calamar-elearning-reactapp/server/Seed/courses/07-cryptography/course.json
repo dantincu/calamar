@@ -1,0 +1,62 @@
+{
+  "title": "Applied Cryptography: The Math and Practice of Internet Security",
+  "description": "The advanced follow-up to Internet Security Essentials. This course explains how modern cryptography works, from the mathematics up, and how to use it without falling into the traps that broke real systems. You will study security definitions, security levels and the birthday bound, modular arithmetic, AES and its modes, authenticated encryption (AES-GCM, ChaCha20-Poly1305) and nonce misuse, hash functions, HMAC, HKDF and password hashing, RSA, Diffie-Hellman, elliptic curves and digital signatures (with ECDSA nonce-reuse key recovery), the TLS 1.3 handshake and key schedule, certificates and Certificate Transparency, and post-quantum cryptography (ML-KEM, ML-DSA, hybrid key exchange). Every topic has formulas and a runnable Node.js script, including toy RSA, Diffie-Hellman and elliptic-curve implementations you can check by hand, and the course ends with a forward-secret secure channel built from standard primitives.",
+  "category": [ "Security", "Cryptography" ],
+  "tags": [ "cryptography", "security", "math", "advanced", "hands-on", "javascript" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Foundations", "chapter": true, "page": "pages/01-foundations.md",
+      "items": [
+        { "title": "Goals, Kerckhoffs's principle and perfect secrecy", "page": "pages/01-01-goals.md" },
+        { "title": "Security levels and the birthday bound", "page": "pages/01-02-security-levels.md", "files": [ "files/hashing/hashes.js" ] },
+        { "title": "Modular arithmetic", "page": "pages/01-03-modular-arithmetic.md", "files": [ "files/math/modmath.js" ] }
+      ]
+    },
+    {
+      "title": "Symmetric Encryption", "chapter": true, "page": "pages/02-symmetric.md",
+      "items": [
+        { "title": "Block ciphers and modes of operation", "page": "pages/02-01-block-ciphers.md" },
+        { "title": "Authenticated encryption (AEAD)", "page": "pages/02-02-aead.md", "files": [ "files/symmetric/aead.js" ] }
+      ]
+    },
+    {
+      "title": "Hashes, MACs and Key Derivation", "chapter": true, "page": "pages/03-hashes.md",
+      "items": [
+        { "title": "Cryptographic hash functions", "page": "pages/03-01-hash-functions.md", "files": [ "files/hashing/hashes.js" ] },
+        { "title": "Message authentication codes", "page": "pages/03-02-macs.md", "files": [ "files/hashing/hashes.js" ] },
+        { "title": "Key derivation: HKDF and password hashing", "page": "pages/03-03-kdfs.md" }
+      ]
+    },
+    {
+      "title": "Public-Key Cryptography", "chapter": true, "page": "pages/04-public-key.md",
+      "items": [
+        { "title": "RSA", "page": "pages/04-01-rsa.md", "files": [ "files/public-key/toy-rsa.js", "files/math/modmath.js" ] },
+        { "title": "Diffie-Hellman key exchange", "page": "pages/04-02-diffie-hellman.md", "files": [ "files/public-key/dh-toy.js", "files/math/modmath.js" ] },
+        { "title": "Elliptic curves", "page": "pages/04-03-elliptic-curves.md", "files": [ "files/public-key/ecc-toy.js", "files/math/modmath.js" ] },
+        { "title": "Digital signatures", "page": "pages/04-04-signatures.md", "files": [ "files/public-key/ecc-toy.js" ] }
+      ]
+    },
+    {
+      "title": "Protocols", "chapter": true, "page": "pages/05-protocols.md",
+      "items": [
+        { "title": "Inside TLS 1.3", "page": "pages/05-01-tls13.md" },
+        { "title": "Public-key infrastructure and certificates", "page": "pages/05-02-pki.md" }
+      ]
+    },
+    {
+      "title": "Post-Quantum Cryptography and Pitfalls", "chapter": true, "page": "pages/06-future.md",
+      "items": [
+        { "title": "Post-quantum cryptography", "page": "pages/06-01-post-quantum.md" },
+        { "title": "Common cryptographic mistakes", "page": "pages/06-02-pitfalls.md" }
+      ]
+    },
+    {
+      "title": "Project: A Secure Channel", "chapter": true, "page": "pages/07-project.md",
+      "items": [
+        { "title": "Building and attacking a secure channel", "page": "pages/07-01-secure-channel.md", "files": [ "files/project/secure-channel.js", "files/symmetric/aead.js" ] }
+      ]
+    }
+  ]
+}

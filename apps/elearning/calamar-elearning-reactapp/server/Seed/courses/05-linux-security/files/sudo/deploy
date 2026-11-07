@@ -1,0 +1,27 @@
+# /etc/sudoers.d/deploy
+# Install with:  sudo visudo -cf deploy && sudo install -m 0440 -o root -g root deploy /etc/sudoers.d/deploy
+# (visudo -c checks the syntax first: a broken sudoers file can lock out every administrator)
+
+# --- Defaults for everyone -------------------------------------------------------
+# Run commands in a new pseudo-terminal, so a backgrounded process can't inject keystrokes into your terminal
+Defaults use_pty
+# Keep a separate, simple log of every sudo command
+Defaults logfile="/var/log/sudo.log"
+# Ask for the password again after 5 minutes (default: 15)
+Defaults timestamp_timeout=5
+# A clean, fixed PATH for commands run through sudo
+Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# --- The deployment account: exactly two commands, nothing else -----------------
+# Full paths, exact arguments: "systemctl restart myapp.service" and no other unit or verb.
+Cmnd_Alias MYAPP = /usr/bin/systemctl restart myapp.service, \
+                   /usr/bin/systemctl reload myapp.service
+deploy ALL=(root) NOPASSWD: MYAPP
+
+# DON'T allow programs that can start other programs or write arbitrary files, such as
+#   vim, less, more, man, find, awk, tar, zip, git, rsync, python, cp, tee, systemctl edit,
+# or anything the user can modify (a script in their home). Each one is a root shell in disguise:
+# see https://gtfobins.github.io for the techniques attackers use.
+
+# --- Administrators: everything, with their own password -------------------------
+%admins ALL=(ALL:ALL) ALL

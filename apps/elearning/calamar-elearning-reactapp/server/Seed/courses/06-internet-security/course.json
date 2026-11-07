@@ -1,0 +1,60 @@
+{
+  "title": "Internet Security Essentials: Protecting Users and Web Applications",
+  "description": "A practical introduction to internet security for developers, IT staff and curious users. You will learn the goals of security and today's main threats, how HTTPS, TLS, DNS, Wi-Fi and VPNs protect (or fail to protect) data in transit, how to reason about password strength with entropy, why passkeys stop phishing, and how social engineering works. The web chapter walks through the OWASP Top 10 with runnable Node.js demonstrations of SQL injection, cross-site scripting, CSRF, password hashing with scrypt and Argon2id, secure sessions and security headers. The course closes with malware, ransomware, backups, incident response, and a hands-on review of a real web application.",
+  "category": [ "Security", "Network and Web Security" ],
+  "tags": [ "security", "web", "networking", "intermediate", "hands-on", "javascript" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Foundations", "chapter": true, "page": "pages/01-foundations.md",
+      "items": [
+        { "title": "Security goals and today's threats", "page": "pages/01-01-cia-threats.md" },
+        { "title": "How the internet works, from a security angle", "page": "pages/01-02-internet-protocols.md" }
+      ]
+    },
+    {
+      "title": "Securing Connections", "chapter": true, "page": "pages/02-connections.md",
+      "items": [
+        { "title": "HTTPS and TLS", "page": "pages/02-01-https-tls.md", "files": [ "files/net/check-tls.js" ] },
+        { "title": "DNS security", "page": "pages/02-02-dns.md" },
+        { "title": "Wi-Fi and VPNs", "page": "pages/02-03-wifi-vpn.md" }
+      ]
+    },
+    {
+      "title": "Accounts and Identity", "chapter": true, "page": "pages/03-identity.md",
+      "items": [
+        { "title": "Password strength, with the math", "page": "pages/03-01-passwords.md", "files": [ "files/accounts/password-strength.js" ] },
+        { "title": "Multi-factor authentication and passkeys", "page": "pages/03-02-mfa-passkeys.md" },
+        { "title": "Phishing and social engineering", "page": "pages/03-03-phishing.md" }
+      ]
+    },
+    {
+      "title": "Web Application Security", "chapter": true, "page": "pages/04-web.md",
+      "items": [
+        { "title": "The OWASP Top 10", "page": "pages/04-01-owasp.md" },
+        { "title": "Injection", "page": "pages/04-02-injection.md", "files": [ "files/web/sqli-demo.js" ] },
+        { "title": "Cross-site scripting (XSS)", "page": "pages/04-03-xss.md", "files": [ "files/web/xss-demo.js" ] },
+        { "title": "CSRF and cookie security", "page": "pages/04-04-csrf-cookies.md", "files": [ "files/web/secure-server.js" ] },
+        { "title": "Authentication and sessions", "page": "pages/04-05-auth-sessions.md", "files": [ "files/web/password-storage.js" ] },
+        { "title": "Security headers and safe deployment", "page": "pages/04-06-headers.md", "files": [ "files/web/secure-server.js", "files/web/nginx-security.conf" ] }
+      ]
+    },
+    {
+      "title": "Defending Against Malware and Incidents", "chapter": true, "page": "pages/05-defending.md",
+      "items": [
+        { "title": "Malware and ransomware", "page": "pages/05-01-malware.md" },
+        { "title": "Backups and incident response", "page": "pages/05-02-backups-response.md" }
+      ]
+    },
+    {
+      "title": "Project: Secure a Web App", "chapter": true, "page": "pages/06-project.md",
+      "items": [
+        {
+          "title": "Project: reviewing and hardening a web application", "page": "pages/06-01-secure-web-app.md",
+          "files": [ "files/web/secure-server.js", "files/web/password-storage.js", "files/web/nginx-security.conf", "files/net/check-tls.js" ]
+        }
+      ]
+    }
+  ]
+}

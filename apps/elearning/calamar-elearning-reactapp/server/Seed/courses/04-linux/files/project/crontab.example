@@ -1,0 +1,26 @@
+# Edit your crontab with: crontab -e     List it with: crontab -l
+#
+# ┌───────────── minute (0-59)
+# │ ┌─────────── hour (0-23)
+# │ │ ┌───────── day of month (1-31)
+# │ │ │ ┌─────── month (1-12)
+# │ │ │ │ ┌───── day of week (0-7, 0 and 7 are Sunday)
+# │ │ │ │ │
+# * * * * *  command
+
+# cron runs commands with a minimal environment: set what you need
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+MAILTO=""
+
+# Every day at 02:30
+30 2 * * *     /usr/local/bin/backup.sh /home/ada/projects >> /home/ada/backup.log 2>&1
+
+# Every 15 minutes
+*/15 * * * *   /usr/local/bin/disk-report.sh -t 90 >> /home/ada/disk.log 2>&1
+
+# At 09:00 on weekdays (Monday to Friday)
+0 9 * * 1-5    /usr/local/bin/log-report.sh /var/log/nginx/access.log > /home/ada/report.txt
+
+# On the first day of every month, at midnight
+0 0 1 * *      find /home/ada/tmp -type f -mtime +30 -delete

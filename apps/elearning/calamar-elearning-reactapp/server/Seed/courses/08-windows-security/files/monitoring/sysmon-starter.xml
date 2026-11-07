@@ -1,0 +1,74 @@
+<!--
+  sysmon-starter.xml: a small, readable Sysmon configuration to learn from.
+  Install Sysmon (Sysinternals) and load it from an elevated prompt:
+      sysmon64.exe -accepteula -i sysmon-starter.xml      (install)
+      sysmon64.exe -c sysmon-starter.xml                  (update the configuration)
+  Events go to: Applications and Services Logs > Microsoft > Windows > Sysmon > Operational
+
+  For production, start from a maintained community configuration (for example SwiftOnSecurity's sysmon-config
+  or Olaf Hartong's sysmon-modular) and tune it: this file is deliberately minimal.
+  Check that the schemaversion matches your Sysmon version (sysmon64 -s prints the schema).
+-->
+<Sysmon schemaversion="4.90">
+  <HashAlgorithms>SHA256</HashAlgorithms>
+  <CheckRevocation/>
+  <EventFiltering>
+
+    <!-- Event 1: every process creation, with its command line, parent and hashes (excluding nothing = log all) -->
+    <RuleGroup name="" groupRelation="or">
+      <ProcessCreate onmatch="exclude"/>
+    </RuleGroup>
+
+    <!-- Event 3: network connections made by programs that rarely have a good reason to -->
+    <RuleGroup name="" groupRelation="or">
+      <NetworkConnect onmatch="include">
+        <Image condition="end with">\powershell.exe</Image>
+        <Image condition="end with">\pwsh.exe</Image>
+        <Image condition="end with">\rundll32.exe</Image>
+        <Image condition="end with">\regsvr32.exe</Image>
+        <Image condition="end with">\mshta.exe</Image>
+        <Image condition="end with">\certutil.exe</Image>
+        <Image condition="end with">\wscript.exe</Image>
+        <Image condition="end with">\cscript.exe</Image>
+      </NetworkConnect>
+    </RuleGroup>
+
+    <!-- Event 8: a process injecting a thread into another process (a common malware technique) -->
+    <RuleGroup name="" groupRelation="or">
+      <CreateRemoteThread onmatch="exclude"/>
+    </RuleGroup>
+
+    <!-- Event 10: something opening lsass.exe, where credentials live -->
+    <RuleGroup name="" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <TargetImage condition="end with">\lsass.exe</TargetImage>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <!-- Event 11: executables and scripts written to places users can write -->
+    <RuleGroup name="" groupRelation="or">
+      <FileCreate onmatch="include">
+        <TargetFilename condition="contains">\AppData\</TargetFilename>
+        <TargetFilename condition="contains">\Downloads\</TargetFilename>
+        <TargetFilename condition="begin with">C:\Users\Public\</TargetFilename>
+        <TargetFilename condition="begin with">C:\Windows\Temp\</TargetFilename>
+      </FileCreate>
+    </RuleGroup>
+
+    <!-- Events 12-14: persistence through the classic Run keys and services -->
+    <RuleGroup name="" groupRelation="or">
+      <RegistryEvent onmatch="include">
+        <TargetObject condition="contains">\CurrentVersion\Run</TargetObject>
+        <TargetObject condition="contains">\CurrentVersion\RunOnce</TargetObject>
+        <TargetObject condition="begin with">HKLM\System\CurrentControlSet\Services\</TargetObject>
+        <TargetObject condition="contains">\Winlogon\</TargetObject>
+      </RegistryEvent>
+    </RuleGroup>
+
+    <!-- Event 22: DNS queries (exclude nothing: useful to find what malware contacted) -->
+    <RuleGroup name="" groupRelation="or">
+      <DnsQuery onmatch="exclude"/>
+    </RuleGroup>
+
+  </EventFiltering>
+</Sysmon>

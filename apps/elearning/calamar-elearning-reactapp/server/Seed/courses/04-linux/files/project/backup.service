@@ -1,0 +1,16 @@
+# /etc/systemd/system/backup.service
+# Runs backup.sh once. Started by backup.timer; try it by hand with:
+#   sudo systemctl start backup.service && journalctl -u backup.service -n 20
+[Unit]
+Description=Archive important directories
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+Environment=BACKUP_DEST=/var/backups/snapshots
+Environment=BACKUP_KEEP=14
+ExecStart=/usr/local/bin/backup.sh /etc /home
+# Run with a low priority so the backup doesn't slow down interactive work
+Nice=10
+IOSchedulingClass=idle

@@ -1,0 +1,51 @@
+## /etc/audit/rules.d/50-hardening.rules
+##
+##   sudo augenrules --load            # merge rules.d/*.rules and load them
+##   sudo auditctl -l                  # list the active rules
+##   sudo ausearch -k identity -i      # events with a key, human-readable (-i)
+##   sudo aureport --summary           # overview
+##
+## -w PATH -p PERMS -k KEY   watch a file or directory; PERMS: r read, w write, x execute, a attribute change
+## -a always,exit -F ... -S SYSCALL -k KEY   log matching system calls
+
+## Remove any existing rules, use a larger buffer, and print a kernel message on failures (-f 1)
+-D
+-b 8192
+-f 1
+
+## --- Accounts and authentication ----------------------------------------------
+-w /etc/passwd -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/group -p wa -k identity
+-w /etc/gshadow -p wa -k identity
+-w /etc/security/ -p wa -k pam
+-w /etc/pam.d/ -p wa -k pam
+
+## --- Privileges ----------------------------------------------------------------
+-w /etc/sudoers -p wa -k sudoers
+-w /etc/sudoers.d/ -p wa -k sudoers
+
+## --- Remote access ---------------------------------------------------------------
+-w /etc/ssh/sshd_config -p wa -k sshd
+-w /etc/ssh/sshd_config.d/ -p wa -k sshd
+-w /root/.ssh/ -p wa -k root_ssh
+
+## --- Persistence: services, timers, cron -----------------------------------------
+-w /etc/systemd/system/ -p wa -k systemd
+-w /etc/cron.d/ -p wa -k cron
+-w /etc/crontab -p wa -k cron
+-w /var/spool/cron/ -p wa -k cron
+
+## --- Every command run as root by a logged-in human (auid = the original login user) ---
+-a always,exit -F arch=b64 -S execve -F euid=0 -F auid>=1000 -F auid!=unset -k root_cmds
+-a always,exit -F arch=b32 -S execve -F euid=0 -F auid>=1000 -F auid!=unset -k root_cmds
+
+## --- Kernel modules loaded or removed: rootkits often arrive as modules ------------
+-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -k modules
+-w /usr/sbin/insmod -p x -k modules
+-w /usr/sbin/modprobe -p x -k modules
+
+## --- Make the rules immutable until the next reboot -----------------------------
+## An attacker with root can no longer silently remove them (but you can't change them either without a reboot).
+## Keep this last, and enable it only when the rules are final.
+-e 2

@@ -1,0 +1,66 @@
+{
+  "title": "Linux Fundamentals: From the Shell to System Administration",
+  "description": "A hands-on introduction to Linux for developers and IT beginners. You will learn how a Linux system is put together, how to work efficiently in the shell, how files, users and permissions work (including the octal arithmetic behind chmod and umask), how to process text with grep, sed and awk, and how to write shell scripts that behave well when things go wrong. You will then manage processes and services with systemd, schedule jobs, handle packages, disks and networking, and finish by building an automated, rotating backup run by a systemd timer. Every script in the course comes as a sample file you can run.",
+  "category": [ "Operating Systems", "Linux" ],
+  "tags": [ "linux", "shell", "bash", "sysadmin", "beginner", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Getting Started", "chapter": true, "page": "pages/01-getting-started.md",
+      "items": [
+        { "title": "What is Linux?", "page": "pages/01-01-what-is-linux.md" },
+        { "title": "Getting a Linux system", "page": "pages/01-02-getting-linux.md" },
+        { "title": "The shell", "page": "pages/01-03-shell.md" }
+      ]
+    },
+    {
+      "title": "Files and the File System", "chapter": true, "page": "pages/02-files.md",
+      "items": [
+        { "title": "The directory hierarchy", "page": "pages/02-01-hierarchy.md" },
+        { "title": "Managing files", "page": "pages/02-02-managing-files.md" },
+        { "title": "Finding files and text", "page": "pages/02-03-finding.md" },
+        { "title": "Links and inodes", "page": "pages/02-04-links-inodes.md" }
+      ]
+    },
+    {
+      "title": "Users and Permissions", "chapter": true, "page": "pages/03-users.md",
+      "items": [
+        { "title": "Users and groups", "page": "pages/03-01-users-groups.md" },
+        { "title": "Permissions", "page": "pages/03-02-permissions.md" },
+        { "title": "Acting as root with sudo", "page": "pages/03-03-sudo.md" }
+      ]
+    },
+    {
+      "title": "The Command-Line Toolbox", "chapter": true, "page": "pages/04-toolbox.md",
+      "items": [
+        { "title": "Redirection and pipes", "page": "pages/04-01-pipes.md" },
+        { "title": "Text processing: grep, cut, sort, uniq, sed and awk", "page": "pages/04-02-text-processing.md", "files": [ "files/text/access.log", "files/text/log-report.sh" ] },
+        { "title": "Shell scripting basics", "page": "pages/04-03-scripting.md", "files": [ "files/scripts/hello.sh" ] },
+        { "title": "Writing robust scripts", "page": "pages/04-04-robust-scripts.md", "files": [ "files/scripts/disk-report.sh" ] }
+      ]
+    },
+    {
+      "title": "Processes and Services", "chapter": true, "page": "pages/05-processes.md",
+      "items": [
+        { "title": "Processes and signals", "page": "pages/05-01-processes.md" },
+        { "title": "Services with systemd", "page": "pages/05-02-systemd.md" },
+        { "title": "Scheduling jobs: cron and systemd timers", "page": "pages/05-03-scheduling.md", "files": [ "files/project/crontab.example", "files/project/backup.timer" ] }
+      ]
+    },
+    {
+      "title": "Software, Storage and Networking", "chapter": true, "page": "pages/06-system.md",
+      "items": [
+        { "title": "Package management", "page": "pages/06-01-packages.md" },
+        { "title": "Disks and file systems", "page": "pages/06-02-storage.md", "files": [ "files/scripts/disk-report.sh" ] },
+        { "title": "Networking basics", "page": "pages/06-03-networking.md" }
+      ]
+    },
+    {
+      "title": "Project: Automated Backups", "chapter": true, "page": "pages/07-project.md",
+      "items": [
+        { "title": "Building a rotating backup", "page": "pages/07-01-backup-project.md", "files": [ "files/project/backup.sh", "files/project/backup.service", "files/project/backup.timer" ] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Advanced Linux: Security and Hardening",
+  "description": "The advanced follow-up to Linux Fundamentals, for administrators and developers who run Linux servers. You will learn to threat-model a server and reduce its attack surface, store and check passwords properly with PAM, write sudo rules that can't be escaped, lock SSH down to keys and ban scanners with fail2ban, find and fix privilege-escalation paths (setuid, capabilities, ACLs), confine programs with AppArmor and SELinux, build a default-deny nftables firewall, sandbox services with systemd, record what matters with auditd, detect tampering, prioritize patches, harden the kernel and run containers safely. The course ends with a read-only audit script and a practical incident-response guide. Every topic comes with a commented, ready-to-adapt configuration file.",
+  "category": [ "Security", "Linux Security" ],
+  "tags": [ "linux", "security", "sysadmin", "advanced", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Thinking About Security", "chapter": true, "page": "pages/01-thinking.md",
+      "items": [
+        { "title": "Threat modeling and attack surface", "page": "pages/01-01-threat-modeling.md" },
+        { "title": "Security principles", "page": "pages/01-02-principles.md" }
+      ]
+    },
+    {
+      "title": "Accounts and Authentication", "chapter": true, "page": "pages/02-accounts.md",
+      "items": [
+        { "title": "Password storage and PAM", "page": "pages/02-01-passwords-pam.md" },
+        { "title": "Hardening sudo", "page": "pages/02-02-sudo.md", "files": [ "files/sudo/deploy" ] },
+        { "title": "Hardening SSH", "page": "pages/02-03-ssh.md", "files": [ "files/ssh/10-hardening.conf", "files/ssh/jail.local" ] }
+      ]
+    },
+    {
+      "title": "Files and Privileges", "chapter": true, "page": "pages/03-privileges.md",
+      "items": [
+        { "title": "setuid, capabilities and ACLs", "page": "pages/03-01-suid-capabilities.md" },
+        { "title": "Mandatory access control: AppArmor and SELinux", "page": "pages/03-02-mac.md", "files": [ "files/apparmor/usr.local.bin.myapp" ] }
+      ]
+    },
+    {
+      "title": "Network Defense", "chapter": true, "page": "pages/04-network.md",
+      "items": [
+        { "title": "A default-deny firewall with nftables", "page": "pages/04-01-nftables.md", "files": [ "files/firewall/nftables.conf" ] },
+        { "title": "Sandboxing services with systemd", "page": "pages/04-02-sandboxing.md", "files": [ "files/systemd/myapp.service" ] }
+      ]
+    },
+    {
+      "title": "Monitoring and Detection", "chapter": true, "page": "pages/05-detection.md",
+      "items": [
+        { "title": "Auditing with auditd", "page": "pages/05-01-auditd.md", "files": [ "files/audit/50-hardening.rules" ] },
+        { "title": "File integrity and rootkits", "page": "pages/05-02-integrity.md" },
+        { "title": "Patch and vulnerability management", "page": "pages/05-03-patching.md" }
+      ]
+    },
+    {
+      "title": "Kernel and Containers", "chapter": true, "page": "pages/06-kernel.md",
+      "items": [
+        { "title": "Kernel hardening with sysctl", "page": "pages/06-01-sysctl.md", "files": [ "files/sysctl/99-hardening.conf" ] },
+        { "title": "Namespaces, cgroups and container security", "page": "pages/06-02-containers.md" }
+      ]
+    },
+    {
+      "title": "Project: Audit and Respond", "chapter": true, "page": "pages/07-project.md",
+      "items": [
+        { "title": "Auditing a host", "page": "pages/07-01-audit-project.md", "files": [ "files/project/audit-host.sh" ] },
+        { "title": "When you find a compromise", "page": "pages/07-02-incident-response.md" }
+      ]
+    }
+  ]
+}
