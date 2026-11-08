@@ -1,0 +1,55 @@
+{
+  "title": "Classical Mechanics: Motion, Forces and Energy",
+  "description": "The physics of motion, from a thrown ball to the orbits of planets, with the math worked out and checked by simulation. You will learn to describe motion (vectors, velocity, acceleration, the equations of uniform acceleration), projectiles with and without air drag, Newton's three laws, friction, inclined planes and circular motion, work, energy and power, momentum and collisions, the rocket equation, rotation (torque, moment of inertia, angular momentum, rolling), universal gravitation, Kepler's laws, orbits and escape speed, and oscillations (springs, pendulums, damping and resonance). Small Node.js tools compute trajectories with air drag, the exact period of a pendulum, collisions with any coefficient of restitution, orbits and transfer burns. The final project teaches how physics simulations work: you will compare the Euler, Verlet and Runge-Kutta methods and see why some conserve energy for millions of steps and others spiral out.",
+  "category": [ "Science", "Physics" ],
+  "tags": [ "science", "physics", "mechanics", "beginner", "math", "simulation", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Describing Motion", "chapter": true, "page": "pages/01-kinematics.md",
+      "items": [
+        { "title": "Position, velocity and acceleration", "page": "pages/01-01-describing-motion.md" },
+        { "title": "Projectiles", "page": "pages/01-02-projectiles.md", "files": [ "files/sim/motion.js" ] }
+      ]
+    },
+    {
+      "title": "Forces", "chapter": true, "page": "pages/02-forces.md",
+      "items": [
+        { "title": "Newton's laws", "page": "pages/02-01-newtons-laws.md" },
+        { "title": "Friction, drag and circular motion", "page": "pages/02-02-friction-circular.md", "files": [ "files/sim/motion.js" ] }
+      ]
+    },
+    {
+      "title": "Energy and Momentum", "chapter": true, "page": "pages/03-energy-momentum.md",
+      "items": [
+        { "title": "Work, energy and power", "page": "pages/03-01-work-energy.md" },
+        { "title": "Momentum, collisions and rockets", "page": "pages/03-02-momentum.md", "files": [ "files/sim/collide.js", "files/sim/motion.js" ] }
+      ]
+    },
+    {
+      "title": "Rotation", "chapter": true, "page": "pages/04-rotation.md",
+      "items": [
+        { "title": "Torque, inertia and angular momentum", "page": "pages/04-01-rotation.md" }
+      ]
+    },
+    {
+      "title": "Gravitation", "chapter": true, "page": "pages/05-gravitation.md",
+      "items": [
+        { "title": "Gravity, Kepler's laws and orbits", "page": "pages/05-01-gravity-orbits.md", "files": [ "files/sim/gravity.js" ] }
+      ]
+    },
+    {
+      "title": "Oscillations", "chapter": true, "page": "pages/06-oscillations.md",
+      "items": [
+        { "title": "Springs, pendulums and resonance", "page": "pages/06-01-oscillations.md", "files": [ "files/sim/motion.js" ] }
+      ]
+    },
+    {
+      "title": "Project: Simulating Motion", "chapter": true, "page": "pages/07-project.md",
+      "items": [
+        { "title": "Numerical integration: Euler, Verlet and Runge-Kutta", "page": "pages/07-01-simulation.md", "files": [ "files/sim/motion.js" ] }
+      ]
+    }
+  ]
+}

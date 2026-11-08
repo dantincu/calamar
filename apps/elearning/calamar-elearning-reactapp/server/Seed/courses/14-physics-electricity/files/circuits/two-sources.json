@@ -1,0 +1,10 @@
+{
+  "title": "Two batteries in parallel on a 4 Ω load: 12 V (internal resistance 0.5 Ω) and 9 V (internal resistance 1 Ω)",
+  "elements": [
+    { "type": "V", "name": "B1", "nodes": ["p1", "0"], "value": 12 },
+    { "type": "R", "name": "r1", "nodes": ["p1", "top"], "value": 0.5 },
+    { "type": "V", "name": "B2", "nodes": ["p2", "0"], "value": 9 },
+    { "type": "R", "name": "r2", "nodes": ["p2", "top"], "value": 1 },
+    { "type": "R", "name": "Rload", "nodes": ["top", "0"], "value": 4 }
+  ]
+}

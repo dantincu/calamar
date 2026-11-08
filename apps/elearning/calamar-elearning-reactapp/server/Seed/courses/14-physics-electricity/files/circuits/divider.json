@@ -1,0 +1,9 @@
+{
+  "title": "Voltage divider: 12 V across 1 kΩ and 2 kΩ in series, with a 2 kΩ load",
+  "elements": [
+    { "type": "V", "name": "V1", "nodes": ["in", "0"], "value": 12 },
+    { "type": "R", "name": "R1", "nodes": ["in", "out"], "value": 1000 },
+    { "type": "R", "name": "R2", "nodes": ["out", "0"], "value": 2000 },
+    { "type": "R", "name": "Rload", "nodes": ["out", "0"], "value": 2000 }
+  ]
+}

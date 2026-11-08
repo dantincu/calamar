@@ -1,0 +1,11 @@
+{
+  "title": "Wheatstone bridge: a strain gauge (Rx = 120.24 Ω) against three 120 Ω resistors, 5 V supply",
+  "elements": [
+    { "type": "V", "name": "V1", "nodes": ["top", "0"], "value": 5 },
+    { "type": "R", "name": "R1", "nodes": ["top", "a"], "value": 120 },
+    { "type": "R", "name": "R2", "nodes": ["a", "0"], "value": 120 },
+    { "type": "R", "name": "R3", "nodes": ["top", "b"], "value": 120 },
+    { "type": "R", "name": "Rx", "nodes": ["b", "0"], "value": 120.24 },
+    { "type": "R", "name": "Rmeter", "nodes": ["a", "b"], "value": 1000000 }
+  ]
+}

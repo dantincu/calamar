@@ -1,0 +1,52 @@
+{
+  "title": "Linguistics: The Syllables of the World's Languages",
+  "description": "An introduction to linguistics through the smallest unit everyone can hear: the syllable. You will learn how speech sounds are made and written in the International Phonetic Alphabet, how syllables are built (onset, nucleus, coda, the sonority principle) and why each language allows different ones, and how tone, pitch accent and morae turn one syllable into several. Then a world tour of basic syllables and their many meanings: what ma, mi, na, ne, no, pa, ba, da, ta, ka, la and si mean in Mandarin, Cantonese, Vietnamese, Thai, Hindi, Bengali, Arabic, Persian, Russian, Greek, Japanese, Korean, Swahili, Spanish, French, Romanian and more, why 'ne' means yes in Greek and Korean but no in Czech, and why mama and papa are almost universal. You will also meet sound symbolism (bouba and kiki), shared roots from Proto-Indo-European and the Semitic languages, Grimm's law, borrowings like tea and chai, and the writing systems built on syllables (Japanese kana, Hangul, Devanagari, Cherokee). Node.js tools look up syllables in a dataset of over 150 meanings in 28 languages, split words into syllables and morae by the rules of each language, compose Hangul blocks and convert pinyin tones. The project extends the dataset and analyzes it.",
+  "category": [ "Languages", "Linguistics" ],
+  "tags": [ "linguistics", "languages", "phonetics", "etymology", "beginner", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Sounds and Syllables", "chapter": true, "page": "pages/01-sounds.md",
+      "items": [
+        { "title": "Speech sounds and the IPA", "page": "pages/01-01-speech-sounds.md" },
+        { "title": "The structure of the syllable", "page": "pages/01-02-syllable-structure.md", "files": [ "files/sound/syllabify.js" ] },
+        { "title": "Tone, pitch accent and morae", "page": "pages/01-03-tone-and-mora.md", "files": [ "files/sound/syllabify.js", "files/writing/scripts.js" ] }
+      ]
+    },
+    {
+      "title": "One Syllable, Many Meanings", "chapter": true, "page": "pages/02-meaning.md",
+      "items": [
+        { "title": "The arbitrary sign and homophony", "page": "pages/02-01-arbitrary-sign.md", "files": [ "files/syllables/syllables.js", "files/syllables/syllables.json" ] },
+        { "title": "A world tour: ma, mi, na, ne, no", "page": "pages/02-02-tour-m-n.md", "files": [ "files/syllables/syllables.js", "files/syllables/syllables.json" ] },
+        { "title": "A world tour: pa, ba, da, ta, ka, la, si", "page": "pages/02-03-tour-others.md", "files": [ "files/syllables/syllables.js", "files/syllables/syllables.json" ] }
+      ]
+    },
+    {
+      "title": "When Sound and Meaning Meet", "chapter": true, "page": "pages/03-motivated.md",
+      "items": [
+        { "title": "Why mama and papa are everywhere", "page": "pages/03-01-mama-papa.md" },
+        { "title": "Sound symbolism: bouba, kiki and small i", "page": "pages/03-02-sound-symbolism.md" }
+      ]
+    },
+    {
+      "title": "Syllables Through History", "chapter": true, "page": "pages/04-history.md",
+      "items": [
+        { "title": "Shared roots: the Indo-European family", "page": "pages/04-01-indo-european.md" },
+        { "title": "Semitic roots and travelling words", "page": "pages/04-02-roots-and-loans.md" }
+      ]
+    },
+    {
+      "title": "Writing Syllables", "chapter": true, "page": "pages/05-writing.md",
+      "items": [
+        { "title": "Syllabaries, abugidas and Hangul", "page": "pages/05-01-writing-syllables.md", "files": [ "files/writing/scripts.js" ] }
+      ]
+    },
+    {
+      "title": "Project: A Syllable Dictionary", "chapter": true, "page": "pages/06-project.md",
+      "items": [
+        { "title": "Extending and analyzing the dataset", "page": "pages/06-01-dictionary.md", "files": [ "files/syllables/syllables.js", "files/syllables/syllables.json", "files/sound/syllabify.js", "files/writing/scripts.js" ] }
+      ]
+    }
+  ]
+}

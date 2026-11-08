@@ -1,0 +1,56 @@
+{
+  "title": "Electricity and Magnetism: From Charges to Circuits",
+  "description": "How electricity and magnetism work, and how they power the modern world. You will learn about electric charge and Coulomb's law, electric fields and potential, capacitors, current, resistance and Ohm's law, power and energy, series and parallel circuits, Kirchhoff's laws and nodal analysis, RC and RL transients, magnetic forces on charges and currents (motors, mass spectrometers), the magnetic fields of wires and coils, Faraday's law of induction, generators, transformers and the power grid, alternating current, impedance, filters and resonance, and Maxwell's equations, which predict electromagnetic waves and the speed of light. Small Node.js tools compute fields and forces, charging curves and induced voltages, and a circuit simulator solves any network of resistors, capacitors, inductors and sources, in DC and AC, with the same method used inside SPICE. The course ends with a circuit lab: a strain-gauge bridge, two batteries in parallel, and the tuned circuit of a radio.",
+  "category": [ "Science", "Physics" ],
+  "tags": [ "science", "physics", "electricity", "intermediate", "math", "simulation", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Electrostatics", "chapter": true, "page": "pages/01-electrostatics.md",
+      "items": [
+        { "title": "Electric charge and Coulomb's law", "page": "pages/01-01-charge.md", "files": [ "files/fields/em.js" ] },
+        { "title": "Electric field, potential and capacitors", "page": "pages/01-02-field-potential.md", "files": [ "files/fields/em.js" ] }
+      ]
+    },
+    {
+      "title": "Direct-Current Circuits", "chapter": true, "page": "pages/02-circuits.md",
+      "items": [
+        { "title": "Current, resistance and power", "page": "pages/02-01-current.md" },
+        { "title": "Kirchhoff's laws and circuit analysis", "page": "pages/02-02-kirchhoff.md", "files": [ "files/circuits/circuit.js", "files/circuits/divider.json" ] },
+        { "title": "Charging and discharging capacitors", "page": "pages/02-03-rc.md", "files": [ "files/fields/em.js" ] }
+      ]
+    },
+    {
+      "title": "Magnetism", "chapter": true, "page": "pages/03-magnetism.md",
+      "items": [
+        { "title": "Magnetic forces", "page": "pages/03-01-magnetic-force.md", "files": [ "files/fields/em.js" ] },
+        { "title": "Magnetic fields of currents", "page": "pages/03-02-magnetic-fields.md", "files": [ "files/fields/em.js" ] }
+      ]
+    },
+    {
+      "title": "Electromagnetic Induction", "chapter": true, "page": "pages/04-induction.md",
+      "items": [
+        { "title": "Faraday's law, generators and transformers", "page": "pages/04-01-induction.md", "files": [ "files/fields/em.js" ] }
+      ]
+    },
+    {
+      "title": "Alternating Current", "chapter": true, "page": "pages/05-ac.md",
+      "items": [
+        { "title": "Impedance, filters and resonance", "page": "pages/05-01-ac-circuits.md", "files": [ "files/circuits/circuit.js", "files/circuits/lowpass.json", "files/circuits/rlc.json" ] }
+      ]
+    },
+    {
+      "title": "Electromagnetic Waves", "chapter": true, "page": "pages/06-waves.md",
+      "items": [
+        { "title": "Maxwell's equations and light", "page": "pages/06-01-maxwell.md", "files": [ "files/fields/em.js" ] }
+      ]
+    },
+    {
+      "title": "Project: A Circuit Lab", "chapter": true, "page": "pages/07-project.md",
+      "items": [
+        { "title": "Bridges, batteries and a radio tuner", "page": "pages/07-01-circuit-lab.md", "files": [ "files/circuits/circuit.js", "files/circuits/wheatstone.json", "files/circuits/two-sources.json", "files/circuits/radio.json" ] }
+      ]
+    }
+  ]
+}

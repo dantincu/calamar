@@ -1,0 +1,59 @@
+{
+  "title": "Biology Essentials: From Molecules to Ecosystems",
+  "description": "A first course in biology, with the numbers that explain it. You will learn what makes something alive and why cells are small (surface, volume and diffusion), the molecules of life, how enzymes work (Michaelis-Menten kinetics) and how cells get their energy (respiration and photosynthesis), the structure of DNA, how genes become proteins and how mutations change them, Mendelian inheritance, natural selection, population genetics (Hardy-Weinberg, selection and genetic drift), the main systems of the human body (with the Nernst equation and herd immunity), and ecology: population growth, predator-prey cycles, energy flow and biodiversity. Small Node.js tools translate DNA, cross genotypes, simulate selection and drift, fit enzyme data and model populations. The course ends with a project that follows the sickle-cell mutation from one DNA letter to the protein, the patient and the population.",
+  "category": [ "Science", "Biology" ],
+  "tags": [ "science", "biology", "genetics", "beginner", "math", "simulation", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Life and Cells", "chapter": true, "page": "pages/01-life.md",
+      "items": [
+        { "title": "What is life?", "page": "pages/01-01-what-is-life.md" },
+        { "title": "Cells, and why they are small", "page": "pages/01-02-cells.md" }
+      ]
+    },
+    {
+      "title": "The Molecules of Life", "chapter": true, "page": "pages/02-molecules.md",
+      "items": [
+        { "title": "Water and the four macromolecules", "page": "pages/02-01-macromolecules.md" },
+        { "title": "Enzymes", "page": "pages/02-02-enzymes.md", "files": [ "files/biochem/enzymes.js" ] },
+        { "title": "Energy: respiration and photosynthesis", "page": "pages/02-03-energy.md" }
+      ]
+    },
+    {
+      "title": "Genetics", "chapter": true, "page": "pages/03-genetics.md",
+      "items": [
+        { "title": "DNA and its replication", "page": "pages/03-01-dna.md" },
+        { "title": "From gene to protein", "page": "pages/03-02-gene-expression.md", "files": [ "files/molecular/dna.js" ] },
+        { "title": "Mendelian inheritance", "page": "pages/03-03-inheritance.md", "files": [ "files/genetics/genetics.js" ] }
+      ]
+    },
+    {
+      "title": "Evolution", "chapter": true, "page": "pages/04-evolution.md",
+      "items": [
+        { "title": "Natural selection and its evidence", "page": "pages/04-01-natural-selection.md" },
+        { "title": "Population genetics: selection and drift", "page": "pages/04-02-population-genetics.md", "files": [ "files/genetics/genetics.js" ] }
+      ]
+    },
+    {
+      "title": "The Human Body", "chapter": true, "page": "pages/05-body.md",
+      "items": [
+        { "title": "A tour of the body's systems", "page": "pages/05-01-body-systems.md" }
+      ]
+    },
+    {
+      "title": "Ecology", "chapter": true, "page": "pages/06-ecology.md",
+      "items": [
+        { "title": "Populations: growth, limits and cycles", "page": "pages/06-01-populations.md", "files": [ "files/ecology/population.js" ] },
+        { "title": "Ecosystems: energy, cycles and biodiversity", "page": "pages/06-02-ecosystems.md", "files": [ "files/ecology/population.js" ] }
+      ]
+    },
+    {
+      "title": "Project: One Letter of DNA", "chapter": true, "page": "pages/07-project.md",
+      "items": [
+        { "title": "Sickle cell: from gene to population", "page": "pages/07-01-sickle-cell.md", "files": [ "files/molecular/dna.js", "files/genetics/genetics.js" ] }
+      ]
+    }
+  ]
+}

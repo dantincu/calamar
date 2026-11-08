@@ -1,0 +1,52 @@
+{
+  "title": "Quantum Physics: From Photons to Qubits",
+  "description": "An introduction to quantum physics that keeps the math honest and runs it on a computer. You will follow the experiments that broke classical physics (blackbody radiation, the photoelectric effect, atomic spectra, electron diffraction) and the ideas that replaced it: photons, the Bohr atom, matter waves, the wave function and Born's rule, the Schrödinger equation, quantized energy levels, tunneling, the uncertainty principle, spin and the Pauli principle. Then the modern view: states and measurement, qubits, superposition and interference, entanglement and Bell's inequality (with the experiments behind the 2022 Nobel Prize), and quantum computing: gates, circuits, Deutsch's algorithm, Grover's search and what Shor's algorithm means for cryptography. Node.js tools compute the early formulas, solve the Schrödinger equation numerically for wells, oscillators and double wells, and simulate a small quantum computer. The project builds and checks three quantum circuits: Deutsch's algorithm, quantum teleportation and Grover search.",
+  "category": [ "Science", "Physics" ],
+  "tags": [ "science", "physics", "quantum", "intermediate", "math", "simulation", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "The Quantum Revolution", "chapter": true, "page": "pages/01-origins.md",
+      "items": [
+        { "title": "Light comes in quanta", "page": "pages/01-01-light-quanta.md", "files": [ "files/quantum/quantum.js" ] },
+        { "title": "Atoms and their spectra", "page": "pages/01-02-atoms-spectra.md", "files": [ "files/quantum/quantum.js" ] },
+        { "title": "Matter waves", "page": "pages/01-03-matter-waves.md", "files": [ "files/quantum/quantum.js" ] }
+      ]
+    },
+    {
+      "title": "Wave Mechanics", "chapter": true, "page": "pages/02-wave-mechanics.md",
+      "items": [
+        { "title": "The wave function and the Schrödinger equation", "page": "pages/02-01-wavefunction.md" },
+        { "title": "Bound states: wells and oscillators", "page": "pages/02-02-bound-states.md", "files": [ "files/quantum/schrodinger.js", "files/quantum/quantum.js" ] },
+        { "title": "Tunneling", "page": "pages/02-03-tunneling.md", "files": [ "files/quantum/quantum.js", "files/quantum/schrodinger.js" ] },
+        { "title": "The uncertainty principle", "page": "pages/02-04-uncertainty.md", "files": [ "files/quantum/quantum.js" ] }
+      ]
+    },
+    {
+      "title": "Spin and Atoms", "chapter": true, "page": "pages/03-atoms.md",
+      "items": [
+        { "title": "Spin, the Pauli principle and the periodic table", "page": "pages/03-01-spin-atoms.md" }
+      ]
+    },
+    {
+      "title": "Measurement and Entanglement", "chapter": true, "page": "pages/04-measurement.md",
+      "items": [
+        { "title": "Qubits, superposition and measurement", "page": "pages/04-01-qubits.md", "files": [ "files/quantum/qubits.js" ] },
+        { "title": "Entanglement and Bell's inequality", "page": "pages/04-02-entanglement.md", "files": [ "files/quantum/qubits.js" ] }
+      ]
+    },
+    {
+      "title": "Quantum Computing", "chapter": true, "page": "pages/05-computing.md",
+      "items": [
+        { "title": "Gates, circuits and algorithms", "page": "pages/05-01-quantum-computing.md", "files": [ "files/quantum/qubits.js" ] }
+      ]
+    },
+    {
+      "title": "Project: Three Quantum Circuits", "chapter": true, "page": "pages/06-project.md",
+      "items": [
+        { "title": "Deutsch, teleportation and Grover", "page": "pages/06-01-circuits.md", "files": [ "files/quantum/qubits.js" ] }
+      ]
+    }
+  ]
+}

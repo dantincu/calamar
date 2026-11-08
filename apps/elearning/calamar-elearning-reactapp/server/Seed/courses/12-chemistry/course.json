@@ -1,0 +1,60 @@
+{
+  "title": "Chemistry Fundamentals: Atoms, Bonds and Reactions",
+  "description": "A first course in general chemistry, built on calculation. You will learn the structure of the atom, isotopes and electron configurations, why the periodic table has its shape and what its trends mean, ionic and covalent bonds, molecular shapes and polarity, the mole and molar mass, balancing equations, stoichiometry, limiting reagents and yields, the gas laws, solutions and concentrations, thermochemistry (enthalpy, Hess's law, bond energies, entropy and Gibbs energy), reaction rates and the Arrhenius equation, chemical equilibrium and Le Chatelier's principle, acids, bases, pH and buffers, and redox reactions, batteries and the Nernst equation. Small Node.js tools compute molar masses, balance equations with exact linear algebra, solve equilibria, compute pH and titration curves, and analyze electrochemical cells. The course ends with a kitchen-chemistry project: measuring the acid in vinegar by titration and predicting the gas from vinegar and baking soda.",
+  "category": [ "Science", "Chemistry" ],
+  "tags": [ "science", "chemistry", "beginner", "math", "hands-on" ],
+  "published": true,
+  "outline": [
+    { "title": "Welcome to the course", "page": "pages/00-welcome.md" },
+    {
+      "title": "Atoms and the Periodic Table", "chapter": true, "page": "pages/01-atoms.md",
+      "items": [
+        { "title": "Inside the atom", "page": "pages/01-01-atoms.md", "files": [ "files/tools/chem.js", "files/tools/elements.js" ] },
+        { "title": "Electrons and configurations", "page": "pages/01-02-electrons.md", "files": [ "files/tools/chem.js", "files/tools/elements.js" ] },
+        { "title": "Periodic trends", "page": "pages/01-03-periodic-trends.md" }
+      ]
+    },
+    {
+      "title": "Chemical Bonds", "chapter": true, "page": "pages/02-bonding.md",
+      "items": [
+        { "title": "Ionic, covalent and metallic bonds", "page": "pages/02-01-bonds.md", "files": [ "files/tools/chem.js", "files/tools/elements.js" ] },
+        { "title": "Molecular shapes and intermolecular forces", "page": "pages/02-02-shapes.md" }
+      ]
+    },
+    {
+      "title": "Counting Atoms: Moles and Reactions", "chapter": true, "page": "pages/03-reactions.md",
+      "items": [
+        { "title": "The mole", "page": "pages/03-01-moles.md", "files": [ "files/tools/chem.js", "files/tools/elements.js" ] },
+        { "title": "Equations, stoichiometry and yield", "page": "pages/03-02-equations.md", "files": [ "files/tools/balance.js", "files/tools/elements.js" ] }
+      ]
+    },
+    {
+      "title": "Gases and Solutions", "chapter": true, "page": "pages/04-states.md",
+      "items": [
+        { "title": "The gas laws", "page": "pages/04-01-gases.md", "files": [ "files/tools/physchem.js" ] },
+        { "title": "Solutions and concentration", "page": "pages/04-02-solutions.md" }
+      ]
+    },
+    {
+      "title": "Energy, Rates and Equilibrium", "chapter": true, "page": "pages/05-energy.md",
+      "items": [
+        { "title": "Thermochemistry", "page": "pages/05-01-thermochemistry.md" },
+        { "title": "Reaction rates", "page": "pages/05-02-kinetics.md", "files": [ "files/tools/physchem.js" ] },
+        { "title": "Chemical equilibrium", "page": "pages/05-03-equilibrium.md", "files": [ "files/tools/physchem.js" ] }
+      ]
+    },
+    {
+      "title": "Acids, Bases and Redox", "chapter": true, "page": "pages/06-acids-redox.md",
+      "items": [
+        { "title": "Acids, bases and pH", "page": "pages/06-01-acids-bases.md", "files": [ "files/tools/ph.js" ] },
+        { "title": "Redox reactions and electrochemistry", "page": "pages/06-02-redox.md", "files": [ "files/tools/physchem.js" ] }
+      ]
+    },
+    {
+      "title": "Project: Kitchen Chemistry", "chapter": true, "page": "pages/07-project.md",
+      "items": [
+        { "title": "Vinegar and baking soda, by the numbers", "page": "pages/07-01-kitchen.md", "files": [ "files/tools/chem.js", "files/tools/elements.js", "files/tools/balance.js", "files/tools/ph.js", "files/tools/physchem.js" ] }
+      ]
+    }
+  ]
+}

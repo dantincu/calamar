@@ -1,0 +1,8 @@
+{
+  "title": "RC low-pass filter: R = 1.6 kΩ, C = 100 nF (cutoff about 1 kHz), output across C",
+  "elements": [
+    { "type": "V", "name": "V1", "nodes": ["in", "0"], "value": 1 },
+    { "type": "R", "name": "R1", "nodes": ["in", "out"], "value": 1600 },
+    { "type": "C", "name": "C1", "nodes": ["out", "0"], "value": 1e-7 }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Series RLC band-pass: 1 V source, L = 10 mH, C = 1 µF, R = 10 Ω, output across R",
+  "elements": [
+    { "type": "V", "name": "V1", "nodes": ["in", "0"], "value": 1 },
+    { "type": "L", "name": "L1", "nodes": ["in", "a"], "value": 0.01 },
+    { "type": "C", "name": "C1", "nodes": ["a", "out"], "value": 1e-6 },
+    { "type": "R", "name": "R1", "nodes": ["out", "0"], "value": 10 }
+  ]
+}

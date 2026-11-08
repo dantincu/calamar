@@ -22,9 +22,13 @@
       "name": "Security",
       "children": [ { "name": "Linux Security" }, { "name": "Windows Security" }, { "name": "Network and Web Security" }, { "name": "Cryptography" } ]
     },
-    { "name": "Health and Lifestyle", "children": [ { "name": "Nutrition" }, { "name": "Cooking" } ] }
+    { "name": "Health and Lifestyle", "children": [ { "name": "Nutrition" }, { "name": "Cooking" } ] },
+    { "name": "Science", "children": [ { "name": "Biology" }, { "name": "Chemistry" }, { "name": "Physics" } ] },
+    { "name": "Languages", "children": [ { "name": "Linguistics" } ] }
   ],
   "tags": [ "beginner", "intermediate", "advanced", "javascript", "react", "frontend", "rust", "systems", "web", "hands-on", "design", "ux", "color", "accessibility", "css",
             "linux", "shell", "bash", "sysadmin", "windows", "powershell", "security", "networking", "cryptography", "math",
-            "nutrition", "health", "cooking", "budget", "bucharest", "romanian-cuisine", "meal-prep" ]
+            "nutrition", "health", "cooking", "budget", "bucharest", "romanian-cuisine", "meal-prep",
+            "science", "biology", "genetics", "chemistry", "physics", "mechanics", "electricity", "quantum", "simulation",
+            "linguistics", "languages", "phonetics", "etymology" ]
 }
