@@ -106,8 +106,8 @@ export function EngineViewport({ engine }: { engine: EngineInfo }) {
     const renderer = new THREE.WebGLRenderer({ antialias: true, logarithmicDepthBuffer: true, powerPreference: 'high-performance' });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, PIXEL_RATIO[s.quality]));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 0.9;
+    renderer.toneMapping = THREE.NeutralToneMapping;
+    renderer.toneMappingExposure = 1.35;
     renderer.shadowMap.enabled = s.quality !== 'low';
     renderer.shadowMap.type = THREE.PCFShadowMap;
     renderer.domElement.className = 'engine-canvas';

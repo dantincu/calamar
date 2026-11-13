@@ -6,6 +6,19 @@ const DEG = Math.PI / 180;
 const BUCHAREST_LAT = 44.44;
 /** The sun's declination at a solstice. */
 const SOLSTICE_DECLINATION = 23.44;
+/**
+ * A clear, dry summer day: little aerosol (turbidity 2), a tight glow around the sun, no clouds, and
+ * about 40 km of visibility (the fog hides ~10% at 10 km, ~60% at 25 km, ~90% at 40 km).
+ */
+const RAYLEIGH = 1.3;
+const MIE = 0.0025;
+const FOG_DENSITY = 0.00004;
+/** Brightness and saturation applied to the sky shader's output. */
+const SKY_GAIN = 0.42;
+const SKY_SATURATION = 1.7;
+/** Sunlight at the ground: warm yellow-white at midday (~5000 K against the blue sky fill), orange when low. */
+const SUN_HIGH = new THREE.Color(0xffedcc);
+const SUN_LOW = new THREE.Color(0xf4b871);
 
 /**
  * The sun's declination on the local summer solstice: +23.44° (June) in the north, −23.44° (December) in the south.
@@ -40,14 +53,14 @@ export class Environment {
   readonly sky = new Sky();
   readonly sun = new THREE.DirectionalLight(0xffffff, 3);
   readonly hemi = new THREE.HemisphereLight(0xbfd8ff, 0x5a5348, 1);
-  readonly fog = new THREE.FogExp2(0xc9d6e0, 0.00022);
+  readonly fog = new THREE.FogExp2(0xb4c8dc, FOG_DENSITY);
   readonly stars: THREE.Points<THREE.BufferGeometry, THREE.PointsMaterial>;
   /** Unit vector towards the sun, local coordinates. */
   readonly sunDir = new THREE.Vector3();
   /** 0 by day, 1 at night in Bucharest: drives lit windows, neon and lamps. */
   night = 0;
   private hour = 14;
-  private baseDensity = 0.00022;
+  private baseDensity = FOG_DENSITY;
   /** World direction → the eye's own east/up/south frame, for the sky shader (which assumes +Y is up). */
   private skyBasis = new THREE.Matrix3();
   private q = new THREE.Quaternion();
@@ -61,14 +74,23 @@ export class Environment {
     this.sky.frustumCulled = false;
     const mat = this.sky.material;
     const u = mat.uniforms;
-    u.turbidity.value = 6;
-    u.rayleigh.value = 1.6;
-    u.mieCoefficient.value = 0.005;
-    u.mieDirectionalG.value = 0.8;
+    u.turbidity.value = 2;
+    u.rayleigh.value = RAYLEIGH;
+    u.mieCoefficient.value = MIE;
+    u.mieDirectionalG.value = 0.9;
+    u.cloudCoverage.value = 0; // a cloudless day
     u.skyBasis = { value: this.skyBasis };
     const dirExpr = 'normalize( vWorldPosition - cameraPosition )';
     if (!mat.fragmentShader.includes(dirExpr)) throw new Error('Unexpected Sky shader: cannot orient it to the local up');
-    mat.fragmentShader = `uniform mat3 skyBasis;\n${mat.fragmentShader.replace(dirExpr, `skyBasis * ${dirExpr}`)}`;
+    // the clear-day sky is a deep, saturated blue overhead: darken and saturate the shader's output a little,
+    // so the bright scene exposure doesn't wash it out to pale blue
+    const outExpr = 'gl_FragColor = vec4( texColor, 1.0 );';
+    if (!mat.fragmentShader.includes(outExpr)) throw new Error('Unexpected Sky shader: cannot adjust its colour');
+    mat.fragmentShader = `uniform mat3 skyBasis;\n${mat.fragmentShader
+      .replace(dirExpr, `skyBasis * ${dirExpr}`)
+      .replace(outExpr, `vec3 skyC = texColor * ${SKY_GAIN.toFixed(3)};
+			float skyL = dot( skyC, vec3( 0.2126, 0.7152, 0.0722 ) );
+			gl_FragColor = vec4( max( mix( vec3( skyL ), skyC, ${SKY_SATURATION.toFixed(3)} ), 0.0 ), 1.0 );`)}`;
     scene.add(this.sky);
 
     this.stars = makeStars();
@@ -113,10 +135,11 @@ export class Environment {
     this.night = 1 - THREE.MathUtils.smoothstep(elDeg, -4, 6);
     const golden = 1 - THREE.MathUtils.smoothstep(elDeg, 2, 22);
 
-    this.sun.intensity = 3.2 * THREE.MathUtils.smoothstep(elDeg, -1, 6);
-    this.sun.color.setHSL(0.09, 0.85 * golden, 0.5 + 0.5 * (1 - golden * 0.6));
-    this.hemi.intensity = 0.25 + 0.95 * day;
-    this.hemi.color.setHSL(0.6, 0.5, 0.35 + 0.4 * day);
+    // clear-sky balance: direct sun ~7x the sky's fill on the ground, so shadows are crisp and fairly dark
+    this.sun.intensity = 4 * THREE.MathUtils.smoothstep(elDeg, -1, 6);
+    this.sun.color.copy(SUN_HIGH).lerp(SUN_LOW, golden);
+    this.hemi.intensity = 0.2 + 0.7 * day;
+    this.hemi.color.setHSL(0.59, 0.6, 0.32 + 0.3 * day);
     this.hemi.groundColor.setHSL(0.08, 0.15, 0.12 + 0.2 * day);
   }
 
@@ -142,15 +165,14 @@ export class Environment {
     this.skyBasis.setFromMatrix4(this.m4.makeRotationFromQuaternion(inv));
     const space = THREE.MathUtils.smoothstep(altitude, 15000, 90000);
     const air = Math.max(0.002, 1 - space); // never 0: the shader divides by it
-    u.rayleigh.value = 1.6 * air;
-    u.mieCoefficient.value = 0.005 * air;
-    u.cloudCoverage.value = altitude < 12000 ? 0.4 : 0;
+    u.rayleigh.value = RAYLEIGH * air;
+    u.mieCoefficient.value = MIE * air;
 
     // fog colour from the sun's height where the eye is
     const elDeg = Math.asin(THREE.MathUtils.clamp(localSun.y, -1, 1)) / DEG;
     const day = THREE.MathUtils.smoothstep(elDeg, -6, 8);
     const golden = 1 - THREE.MathUtils.smoothstep(elDeg, 2, 22);
-    this.fogDay.set(0xc4d2de).lerp(new THREE.Color(0xe8b98a), golden * 0.55);
+    this.fogDay.set(0xb4c8dc).lerp(new THREE.Color(0xe8b98a), golden * 0.55);
     this.fog.color.copy(this.fogNight).lerp(this.fogDay, day * air);
     this.fog.density = (this.baseDensity / (1 + altitude / 250)) * air;
 

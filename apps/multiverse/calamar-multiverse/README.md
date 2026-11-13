@@ -405,7 +405,7 @@ Around the detailed scene, the whole Earth is there at a coarse level of detail,
   - `traffic.ts`: cars, buses and trolleybuses that follow each other and stop at red lights; pedestrians.
   - `landmarks.ts`: ASE (portico and dome), InterContinental, National Theatre, Biserica Amzei, Casa Sturdza, the Capitoline Wolf, metro entrances.
   - `city.ts`: the generated city around the boulevard, parks (Grădina Icoanei, Cișmigiu with its lake, Grădina Ioanid), and the Ilfov fields out to 60 km, curving with the Earth.
-  - `environment.ts`: sky (turned to the local up anywhere on the globe and fading out in space), stars, the sun's position for Bucharest's latitude, fog, day/night.
+  - `environment.ts`: sky (turned to the local up anywhere on the globe and fading out in space), stars, the solstice sun for the drone's latitude, and the weather of a clear, dry summer day (no clouds, ~40 km visibility, warm yellow sunlight, crisp shadows), fog, day/night.
 
 ## Accuracy notes (Magheru)
 

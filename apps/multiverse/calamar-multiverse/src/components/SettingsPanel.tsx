@@ -23,7 +23,7 @@ export function SettingsPanel() {
       <section>
         <h3>World</h3>
         <label className="field">
-          <span>Time of day <b>{formatHour(s.timeOfDay)}</b></span>
+          <span>Time of day <b>{formatHour(s.timeOfDay)}</b> · always the summer solstice (21 June)</span>
           <input type="range" min={0} max={24} step={0.25} value={s.timeOfDay} onChange={(e) => update({ timeOfDay: Number(e.target.value) })} />
         </label>
         <label className="check">
